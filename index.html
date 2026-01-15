@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" content="BioPro: Towards Autonomous Biological Experimentation via Neuro-Symbolic Agents and Rigorous Benchmarking.">
-  <meta name="keywords" content="LLM, Bio-Automation, Agents, Benchmark, Neuro-Symbolic">
+  <meta name="keywords" content="LLM, Bio-Automation, Agents, Benchmark, Neuro-Symbolic, BioProAgent, BioProBench">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BioPro Project: Agent & Benchmark</title>
 
@@ -12,30 +12,63 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    body { font-family: 'Noto Sans', sans-serif; background-color: #fcfcfc; }
-    .title.is-1 { font-family: 'Google Sans', sans-serif; font-weight: 700; color: #2c3e50; }
+    body {
+      font-family: 'Noto Sans', sans-serif;
+      background-color: #ffffff;
+    }
+    
+    /* Typography */
+    .title.is-1 { font-family: 'Google Sans', sans-serif; font-weight: 700; color: #202124; margin-bottom: 10px; }
     .title.is-3 { font-family: 'Google Sans', sans-serif; font-weight: 600; color: #4a4a4a; margin-top: 40px; }
-    .publication-title { font-size: 2.8rem; margin-bottom: 20px; }
-    .author-block { font-size: 1.2rem; color: #333; margin-bottom: 5px; }
-    .institution-block { font-size: 1rem; color: #666; margin-bottom: 20px; }
+    .subtitle.is-4 { color: #5f6368; font-weight: 400; margin-top: 10px; }
     
-    /* Button Styles */
-    .button.is-dark.is-rounded { background-color: #363636; border-color: transparent; color: #fff; transition: all 0.2s ease; }
-    .button.is-dark.is-rounded:hover { background-color: #555; transform: scale(1.02); }
-    .icon { margin-right: 5px; }
-
-    /* Highlights Section */
-    .highlight-box { background: #f0f7ff; border-radius: 10px; padding: 20px; margin: 10px 0; border-left: 5px solid #3273dc; }
+    /* Hero Section */
+    .hero-body { padding-bottom: 2rem; }
+    .publication-title { font-size: 3rem; line-height: 1.2; }
     
-    /* Teaser & Images */
-    .teaser-img { border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); width: 100%; margin-bottom: 20px; }
-    .caption { font-size: 0.9rem; color: #777; font-style: italic; text-align: center; margin-top: 10px; }
+    /* Authors & Links */
+    .author-block { font-size: 1.25rem; color: #333; margin: 0 5px; }
+    .institution-block { font-size: 1rem; color: #666; margin-top: 10px; display: block; }
+    .publication-links { margin-top: 25px; }
     
-    /* Abstract Text */
-    .content p { font-size: 1.1rem; line-height: 1.7; color: #2c3e50; text-align: justify; }
-
+    /* Buttons */
+    .button.is-dark.is-rounded { background-color: #363636; border: 1px solid transparent; transition: all 0.2s; }
+    .button.is-dark.is-rounded:hover { background-color: #555; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    
+    /* Video & Images */
+    .video-container {
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      margin-bottom: 1.5rem;
+      border: 1px solid #eee;
+    }
+    video { width: 100%; display: block; }
+    
+    .image-container {
+      margin: 20px 0;
+      padding: 10px;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #f0f0f0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    img.architecture-img { width: 100%; height: auto; }
+    
+    /* Layout Elements */
+    .section-title-box {
+      background: linear-gradient(90deg, #f0f7ff 0%, #ffffff 100%);
+      border-left: 6px solid #3273dc;
+      padding: 15px 25px;
+      margin-bottom: 25px;
+      border-radius: 0 8px 8px 0;
+    }
+    .content p { font-size: 1.15rem; line-height: 1.7; color: #333; text-align: justify; }
+    .highlight-text { color: #3273dc; font-weight: 600; }
+    
     /* Bibtex */
-    pre { background-color: #f5f5f5; border-radius: 5px; padding: 15px; overflow-x: auto; font-size: 0.9rem; }
+    pre { background-color: #f5f5f5; padding: 20px; border-radius: 8px; border: 1px solid #ddd; }
   </style>
 </head>
 
@@ -48,16 +81,15 @@
         <div class="column has-text-centered">
           
           <h1 class="title is-1 publication-title">
-            <span style="color: #3273dc;">BioPro Project</span><br>
-            Towards Reliable Autonomous Wet-Lab Experimentation
+            BioPro Project
           </h1>
-          
-          <h2 class="subtitle is-4" style="color: #666;">
-            Bridging LLM Reasoning and Physical Execution
+          <h2 class="subtitle is-4">
+            Towards Reliable Autonomous Wet-Lab Experimentation<br>
+            via <span class="highlight-text">Neuro-Symbolic Agents</span> and <span class="highlight-text">Rigorous Benchmarking</span>
           </h2>
 
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">Your Name<sup>1</sup>,</span>
+          <div class="is-size-5 publication-authors" style="margin-top: 20px;">
+            <span class="author-block"><strong>Your Name</strong><sup>1</sup>,</span>
             <span class="author-block">Co-Author Name<sup>1</sup>,</span>
             <span class="author-block">Advisor Name<sup>2</sup></span>
           </div>
@@ -65,33 +97,25 @@
             <span class="institution-block"><sup>1</sup>University Name, <sup>2</sup>Lab Name</span>
           </div>
 
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <span class="link-block">
-                <a href="path/to/BioProAgent.pdf" class="button is-dark is-rounded is-outlined">
-                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>BioProAgent Paper (ACL)</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="path/to/BioProBench.pdf" class="button is-dark is-rounded is-outlined">
-                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>BioProBench Paper (ICLR)</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://github.com/your-repo" class="button is-dark is-rounded is-outlined">
-                  <span class="icon"><i class="fab fa-github"></i></span>
-                  <span>View Code</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://huggingface.co/" class="button is-dark is-rounded is-outlined">
-                  <span class="icon"><i class="far fa-images"></i></span>
-                  <span>HuggingFace Data</span>
-                </a>
-              </span>
-            </div>
+          <div class="publication-links">
+            <span class="link-block">
+              <a href="path/to/ACL_2026_BioProAgent.pdf" class="button is-dark is-rounded is-outlined">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>BioProAgent (ACL)</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="path/to/ICLR_2026_BioProBench.pdf" class="button is-dark is-rounded is-outlined">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>BioProBench (ICLR)</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://github.com/YourUsername/BioPro" class="button is-dark is-rounded is-outlined">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code & Data</span>
+              </a>
+            </span>
           </div>
 
         </div>
@@ -103,12 +127,16 @@
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
-      <div class="column is-full-width has-text-centered">
-        <div style="background:#ddd; height:300px; border-radius:10px; display:flex; align-items:center; justify-content:center;">
-          <p style="color:#666;">static/images/teaser.png</p>
+      <div class="column is-full-width">
+        <div class="video-container">
+          <video poster="" id="teaser" autoplay muted loop playsinline>
+            <source src="./video/ai4slab.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
-        <h2 class="subtitle has-text-centered" style="margin-top:15px;">
-          <strong>From Bench to Bench:</strong> BioProBench evaluates the reasoning gap, and BioProAgent bridges it using neuro-symbolic grounding.
+        <h2 class="subtitle has-text-centered is-size-6">
+          <span class="icon"><i class="fas fa-info-circle"></i></span>
+          <strong>Demo:</strong> Our autonomous agent executing wet-lab protocols in a simulated environment, strictly following hardware constraints.
         </h2>
       </div>
     </div>
@@ -122,14 +150,14 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            The automation of scientific experimentation is critically hindered by the inability of Large Language Models (LLMs) to reliably comprehend the specialized, accuracy-critical, and procedural nature of biological protocols. In wet-lab environments, hallucinations are not just incorrect—they are dangerous.
+            The automation of scientific experimentation is critically hindered by the inability of Large Language Models (LLMs) to reliably comprehend the specialized, accuracy-critical nature of biological protocols. In wet-lab environments, <strong>hallucinations are not merely incorrect—they cause equipment damage.</strong>
           </p>
           <p>
             To address this, we introduce a unified ecosystem:
             <br>
-            1. <strong>BioProBench (ICLR 2026 Submission):</strong> A massive-scale benchmark grounded in 27,000 human-written protocols, designed to expose the "safety-critical reasoning gap" in current LLMs.
+            <strong>1. BioProBench (ICLR 2026):</strong> A massive-scale benchmark grounded in <strong>27,000 human-written protocols</strong>. It exposes the "safety-critical reasoning gap" in current LLMs, showing that even GPT-4 struggles with parameter verification and hardware constraints.
             <br>
-            2. <strong>BioProAgent (ACL 2026 Submission):</strong> A neuro-symbolic framework that solves these challenges. By anchoring probabilistic LLM planning in a deterministic Finite State Machine (FSM) and utilizing a <em>Design-Verify-Rectify</em> workflow, BioProAgent ensures hardware compliance and zero-hallucination execution.
+            <strong>2. BioProAgent (ACL 2026):</strong> A neuro-symbolic framework that anchors probabilistic LLM planning in a deterministic <strong>Finite State Machine (FSM)</strong>. By simulating device states (e.g., PCR temperature, pipette volume) before execution, it ensures hardware compliance and zero-hallucination planning.
           </p>
         </div>
       </div>
@@ -141,24 +169,36 @@
 
 <section class="section">
   <div class="container is-max-desktop">
+    <div class="section-title-box">
+      <h2 class="title is-3" style="margin:0;">🤖 BioProAgent: Neuro-Symbolic Grounding</h2>
+    </div>
+    
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">🧬 BioProBench: The Foundation</h2>
-        
-        <div class="content">
-          <div class="columns is-vcentered">
+        <div class="content has-text-justified">
+          <p>
+            Current LLM agents often generate protocols that look correct but are physically impossible to execute. BioProAgent solves this by introducing <strong>State-Augmented Planning</strong> via a Design-Verify-Rectify workflow.
+          </p>
+          
+          <div class="image-container has-text-centered">
+            <img src="./static/images/architecture.png" class="architecture-img" alt="BioProAgent Architecture">
+            <p class="is-size-7" style="margin-top: 5px; color:#888;">
+              <strong>Figure 1: The BioProAgent Architecture.</strong> The LLM (Neuro) proposes plans, while the FSM (Symbolic) verifies state transitions to prevent unsafe operations.
+            </p>
+          </div>
+
+          <div class="columns">
             <div class="column is-6">
-              <p>
-                BioProBench serves as the first comprehensive testbed for <strong>procedural reasoning in biology</strong>. Unlike general science QA datasets, it focuses on executable logic.
-              </p>
-              <ul style="margin-top:10px;">
-                <li><strong>Scale:</strong> 27,000 protocols, 550,000+ task instances.</li>
-                <li><strong>Diversity:</strong> Covers PCR, Cell Culture, DNA Extraction, and more.</li>
-                <li><strong>Key Metric:</strong> <em>Safety-Critical Accuracy</em> vs. General Comprehension.</li>
+              <h4 class="title is-5">Key Innovations</h4>
+              <ul>
+                <li><strong>Design-Verify-Rectify:</strong> Automatically corrects errors (e.g., wrong temperatures) by checking against device specs.</li>
+                <li><strong>Semantic Symbol Grounding:</strong> Abstracts complex device schemas into symbols, reducing token consumption by <strong>~6x</strong>.</li>
               </ul>
             </div>
             <div class="column is-6">
-               <div style="background:#eee; height:200px; border-radius:8px; display:flex; align-items:center; justify-content:center;">[Data Statistics Chart]</div>
+              <h4 class="title is-5">Performance</h4>
+              <img src="./static/images/results.png" style="border-radius:5px; border:1px solid #eee;" alt="Performance Comparison">
+              <p class="is-size-7">Significantly outperforms GPT-4 baseline in success rate.</p>
             </div>
           </div>
         </div>
@@ -167,62 +207,17 @@
   </div>
 </section>
 
-<section class="section" style="background-color: #f5f5f5;">
+<section class="section" style="background-color: #fbfbfb;">
   <div class="container is-max-desktop">
+    <div class="section-title-box" style="border-left-color: #23d160;">
+      <h2 class="title is-3" style="margin:0;">🧬 BioProBench: A Rigorous Foundation</h2>
+    </div>
+
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">🤖 BioProAgent: The Solution</h2>
-        
-        <div class="content has-text-justified">
+        <div class="content">
           <p>
-            BioProAgent overcomes the "probabilistic nature" of LLMs by introducing <strong>State-Augmented Planning</strong>. It doesn't just generate text; it simulates the state of the lab equipment (e.g., PCR machine, pipette) to verify every step before execution.
+            We constructed <strong>BioProBench</strong> to evaluate LLMs on tasks that actually matter for lab automation: procedural logic, safety checks, and quantitative reasoning.
           </p>
           
-          <div class="has-text-centered" style="margin: 30px 0;">
-             <div style="background:#ddd; height:350px; border-radius:10px; display:flex; align-items:center; justify-content:center;">[Figure 1: Neuro-Symbolic Architecture]</div>
-             <p class="caption">The Neuro-Symbolic Architecture combining LLM reasoning with FSM constraints.</p>
-          </div>
-
-          <div class="highlight-box">
-            <h4 class="title is-5">Key Innovation: Semantic Symbol Grounding</h4>
-            <p>
-              By abstracting complex device schemas into symbols, BioProAgent reduces token consumption by <strong>~6x</strong> while improving instruction-following accuracy significantly compared to GPT-4 baselines.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{BioProAgent2026,
-  author    = {Anonymous},
-  title     = {BioProAgent: Neuro-Symbolic Grounding for Constrained Scientific Planning},
-  journal   = {ACL Submission},
-  year      = {2026},
-}
-
-@article{BioProBench2026,
-  author    = {Anonymous},
-  title     = {BioProBench: A Corpus and Benchmark for Biological Protocol Comprehension},
-  journal   = {ICLR Submission},
-  year      = {2026},
-}</code></pre>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <p>
-        Page template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
-      </p>
-    </div>
-  </div>
-</footer>
-
-</body>
-</html>
+          <div class="
