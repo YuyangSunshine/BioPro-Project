@@ -129,19 +129,25 @@
             <span class="link-block">
               <a href="path/to/BioProAgent.pdf" class="button is-rounded">
                 <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                <span>Agent Paper (ACL)</span>
+                <span>Agent Paper</span>
               </a>
             </span>
             <span class="link-block">
               <a href="path/to/BioProBench.pdf" class="button is-rounded">
                 <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                <span>Benchmark Paper (ICLR)</span>
+                <span>Benchmark Paper </span>
               </a>
             </span>
             <span class="link-block">
-              <a href="https://github.com/yourusername/biopro" class="button is-rounded">
+              <a href="https://github.com/YuyangSunshine/bioprotocolbench" class="button is-rounded">
                 <span class="icon"><i class="fab fa-github"></i></span>
                 <span>Code</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://huggingface.co/BioProBench" class="button is-rounded">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Data</span>
               </a>
             </span>
             <span class="link-block">
@@ -206,60 +212,117 @@
 
 <section class="section" id="Leaderboard">
   <div class="container is-max-desktop">
-    <div class="section-header">
-      <h2 class="section-title">🏆 Leaderboard</h2>
-      <p>Performance comparison on BioProBench (Safety-Critical Tasks)</p>
+    <div class="section-header has-text-centered">
+      <h2 class="title is-3" style="margin-bottom: 10px;">🏆 BioProBench Leaderboard</h2>
+      <p class="subtitle is-5" style="color: #666;">
+        Evaluating LLMs on procedural reasoning tasks: <span class="tag is-light">PQA</span> <span class="tag is-light">ERR</span> <span class="tag is-light">ORD</span> <span class="tag is-light">GEN</span>
+      </p>
     </div>
-    
-    <div class="columns is-centered">
-      <div class="column is-10">
+
+    <div class="column is-full">
+      <div class="box" style="border-top: 5px solid #3273dc;">
+        
+        <div class="tabs is-centered is-boxed">
+          <ul>
+            <li class="is-active"><a><span>Main Leaderboard</span></a></li>
+            </ul>
+        </div>
+
         <div class="table-container">
-          <table class="table is-fullwidth is-hoverable is-striped">
+          <table class="table is-fullwidth is-striped is-hoverable">
             <thead>
-              <tr>
-                <th>Model</th>
-                <th>Method</th>
-                <th class="has-text-centered">Success Rate (%)</th>
-                <th class="has-text-centered">Safety Violation (%)</th>
-                <th class="has-text-centered">Token Cost</th>
+              <tr style="background-color: #f9f9f9;">
+                <th style="width: 20%;">Model</th>
+                <th style="width: 15%;">Type</th>
+                <th class="has-text-centered" title="Procedural QA (Accuracy)">PQA (Acc)</th>
+                <th class="has-text-centered" title="Error Correction (Accuracy)">ERR (Acc)</th>
+                <th class="has-text-centered" title="Ordering (Kendall-Tau)">ORD (τ)</th>
+                <th class="has-text-centered" title="Generation (BLEU)">GEN (BLEU)</th>
               </tr>
             </thead>
             <tbody>
+              <tr style="font-weight: bold; background-color: #f0f7ff;">
+                <td>
+                  Gemini-2.5-Pro 
+                  <span class="icon has-text-warning"><i class="fas fa-crown"></i></span>
+                </td>
+                <td><span class="tag is-info is-light">Proprietary</span></td>
+                <td class="has-text-centered">70.27 🥇</td> <td class="has-text-centered">64.83 🥇</td> <td class="has-text-centered">0.810 🥇</td> <td class="has-text-centered">23.06 🥈</td> </tr>
+
               <tr>
-                <td><strong>BioProAgent (Ours)</strong></td>
-                <td>Neuro-Symbolic</td>
-                <td class="has-text-centered best-score">89.5</td>
-                <td class="has-text-centered best-score">0.0</td>
-                <td class="has-text-centered">Low</td>
-              </tr>
+                <td>Claude-3.7-Sonnet</td>
+                <td><span class="tag is-info is-light">Proprietary</span></td>
+                <td class="has-text-centered">63.90 🥉</td>
+                <td class="has-text-centered">60.93</td>
+                <td class="has-text-centered">0.734 🥈</td>
+                <td class="has-text-centered">25.32 🥇</td> </tr>
+
               <tr>
-                <td>GPT-4</td>
-                <td>Zero-shot</td>
-                <td class="has-text-centered">62.3</td>
-                <td class="has-text-centered">12.5</td>
-                <td class="has-text-centered">High</td>
+                <td>GPT-4o</td>
+                <td><span class="tag is-info is-light">Proprietary</span></td>
+                <td class="has-text-centered">63.50</td>
+                <td class="has-text-centered">62.67 🥈</td>
+                <td class="has-text-centered">0.627</td>
+                <td class="has-text-centered">24.99 🥉</td>
               </tr>
+
               <tr>
-                <td>GPT-4</td>
-                <td>ReAct</td>
-                <td class="has-text-centered second-score">71.8</td>
-                <td class="has-text-centered second-score">4.2</td>
-                <td class="has-text-centered">Medium</td>
+                <td>Gemini-2.0-Flash</td>
+                <td><span class="tag is-info is-light">Proprietary</span></td>
+                <td class="has-text-centered">63.44</td>
+                <td class="has-text-centered">58.67</td>
+                <td class="has-text-centered">0.637</td>
+                <td class="has-text-centered">24.88</td>
               </tr>
+
               <tr>
-                <td>Claude 3.5 Sonnet</td>
-                <td>Zero-shot</td>
-                <td class="has-text-centered">68.1</td>
-                <td class="has-text-centered">8.9</td>
-                <td class="has-text-centered">High</td>
+                <td>GPT-4-Turbo</td>
+                <td><span class="tag is-info is-light">Proprietary</span></td>
+                <td class="has-text-centered">57.92</td>
+                <td class="has-text-centered">56.17</td>
+                <td class="has-text-centered">0.528</td>
+                <td class="has-text-centered">24.47</td>
               </tr>
+
+              <tr style="border-top: 2px solid #dbdbdb;">
+                <td colspan="6" style="padding: 5px; font-size: 0.8rem; color: #888; text-align: center;">Open Source Models</td>
+              </tr>
+
+              <tr>
+                <td>DeepSeek-R1</td>
+                <td><span class="tag is-success is-light">Open Source</span></td>
+                <td class="has-text-centered">--</td> <td class="has-text-centered">--</td>
+                <td class="has-text-centered">--</td>
+                <td class="has-text-centered">--</td>
+              </tr>
+              
+              <tr>
+                <td>Llama-3-70B</td>
+                <td><span class="tag is-success is-light">Open Source</span></td>
+                <td class="has-text-centered">--</td>
+                <td class="has-text-centered">--</td>
+                <td class="has-text-centered">--</td>
+                <td class="has-text-centered">--</td>
+              </tr>
+
             </tbody>
           </table>
-          <p class="is-size-7 has-text-centered" style="padding: 10px; color: #888;">
-            * Lower Safety Violation is better. Success Rate is measured on the Hard-Constraint subset.
-          </p>
+          
+          <div class="content is-small has-text-grey-light has-text-centered" style="margin-top: 10px;">
+            <p>
+              * <b>PQA</b>: Procedural Question Answering, <b>ERR</b>: Error Correction, <b>ORD</b>: Step Ordering, <b>GEN</b>: Protocol Generation.<br>
+              Data extracted from <i>BioProBench: Towards Autonomous Experimentation (ICLR 2026 Submission)</i>.
+            </p>
+          </div>
         </div>
       </div>
+      
+      <div class="notification is-warning is-light has-text-centered" style="margin-top: 20px;">
+        <span class="icon"><i class="fas fa-robot"></i></span>
+        <strong>Want to see the solution?</strong> 
+        See how <a href="#Method">BioProAgent</a> achieves <strong>100% Success Rate</strong> on the Agent Execution tasks by solving the reasoning gaps shown above.
+      </div>
+      
     </div>
   </div>
 </section>
