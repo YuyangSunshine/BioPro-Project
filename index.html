@@ -184,7 +184,7 @@
         </div>
         <div class="content has-text-centered" style="margin-top: 15px; color: #555;">
           <p>
-            <strong>Figure 1:</strong> AI4S LAB: The World's First "One-Stop" Digital Intelligent Life Science Research Platform
+            <strong>AI4S LAB</strong> : The World's First "One-Stop" Digital Intelligent Life Science Research Platform
             AI4S LAB deeply integrates computing power, data, models, and experiments. The platform achieves a closed-loop process: "theoretical prediction → experimental design → automated execution → data analysis".
           </p>
         </div>
@@ -339,7 +339,7 @@
           <div class="content is-small has-text-grey-light has-text-centered" style="margin-top: 10px;">
             <p>
               * <b>PQA</b>: Procedural Question Answering, <b>ERR</b>: Error Correction, <b>ORD</b>: Step Ordering, <b>GEN</b>: Protocol Generation.<br>
-              Data extracted from <i>BioProBench: Towards Autonomous Experimentation (ICLR 2026 Submission)</i>.
+              Data extracted from <i>BioProBench: Comprehensive Dataset and Benchmark in Biological Protocol Understanding and Reasoning</i>.
             </p>
           </div>
         </div>
@@ -368,7 +368,7 @@
             <h4>✨ Core Features</h4>
             <ul>
               <li>
-                🧠 <strong>State-Augmented Adaptive Planning (FSM-Constrained Script-Free Planner)</strong>:
+                <strong>State-Augmented Adaptive Planning (FSM-Constrained Script-Free Planner)</strong>:
                 Abandons rigid linear workflows and adopts a
                 <strong>neuro-symbolic framework</strong> that constrains probabilistic planning via a deterministic
                 <em>Finite State Machine (FSM)</em>. The Agent leverages State-Augmented Planning to flexibly select
@@ -377,28 +377,28 @@
               </li>
       
               <li>
-                🧪 <strong>Scientific Review (Scientific Reflector and Validator)</strong>:
+                <strong>Scientific Review (Scientific Reflector and Validator)</strong>:
                 Incorporates a strict scientific reflection mechanism (Validator) to automatically check for missing
                 control groups, logical flaws, parameter rationality and machine code validity. This enforces a rigorous
                 <em>Draft-Verify-Rectify (DVR)</em> workflow, ensuring the scientific rigor of experimental protocols.
               </li>
       
               <li>
-                🤖 <strong>Automation Hardware Alignment</strong>:
+               <strong>Automation Hardware Alignment</strong>:
                 Reads laboratory device and consumable inventories (CSV), mapping natural language steps to specific
                 machine operations via <strong>Semantic Symbol Grounding</strong>, reducing token consumption by ~6×.
               </li>
       
               <li>
-                💾 <strong>Hybrid Memory System</strong>:
+                <strong>Hybrid Memory System</strong>:
                 <ul>
-                  <li><strong>Short-Term Memory</strong>: Combines both <strong>episodic memory</strong>strong> and <strong>working memory</strong>strong> to maintain long-horizon protocol consistency.</li>
+                  <li><strong>Short-Term Memory</strong>: Combines both <strong>episodic memory</strong> and <strong>working memory</strong> to maintain long-horizon protocol consistency.</li>
                   <li><strong>Long-Term Memory</strong>: Integrates <strong>Mem0</strong> to recall past experimental experiences.</li>
                 </ul>
               </li>
       
               <li>
-                ✋ <strong>Human-in-the-Loop</strong>:
+                <strong>Human-in-the-Loop</strong>:
                 Proactively requests user confirmation at critical decision points to ensure safety in high-risk
                 wet-lab operations.
               </li>
@@ -408,6 +408,14 @@
           </p> -->
           <div style="text-align: center; margin: 30px 0;">
             <img src="./static/images/architecture.png" alt="BioProAgent Architecture">
+          </div>
+          <div class="content has-text-centered" style="margin-top: 15px; color: #555;">
+            <p>
+              <strong>Figure 2: Overview of BioProAgent.</strong>
+              (1) Cognitive Memory utilizes Symbolic Grounding <em>Φ</em> to manage context efficiently;
+              (2) Neural Planner <em>π₀</em> is grounded in a <em>Design-Verify-Rectify FSM Δ(σ)</em>;
+              (3) Hierarchical Verification (<em>Kₛ</em>, <em>Kₚ</em>) acts as a safety interlock, enforcing physical compliance by deterministically triggering rectification.
+            </p>
           </div>
         </div>
       </div>
@@ -424,6 +432,11 @@
           </p>
           <div style="text-align: center; margin: 30px 0;">
             <img src="./static/images/stats.png" alt="BioProBench Statistics">
+          </div>
+            <div class="content has-text-centered" style="margin-top: 15px; color: #555;">
+            <p>
+              Overview of the <strong>BioProBench</strong>.
+            </p>
           </div>
         </div>
       </div>
