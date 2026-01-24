@@ -377,7 +377,7 @@
               </li>
       
               <li>
-                <strong>Scientific Review (Scientific Reflector and Validator)</strong>:
+                <strong>Scientific Review</strong>:
                 Incorporates a strict scientific reflection mechanism (Validator) to automatically check for missing
                 control groups, logical flaws, parameter rationality and machine code validity. This enforces a rigorous
                 <em>Draft-Verify-Rectify (DVR)</em> workflow, ensuring the scientific rigor of experimental protocols.
@@ -411,10 +411,10 @@
           </div>
           <div class="content has-text-centered" style="margin-top: 15px; color: #555;">
             <p>
-              <strong>Figure 2: Overview of BioProAgent.</strong>
-              (1) Cognitive Memory utilizes Symbolic Grounding <em>Φ</em> to manage context efficiently;
-              (2) Neural Planner <em>π₀</em> is grounded in a <em>Design-Verify-Rectify FSM Δ(σ)</em>;
-              (3) Hierarchical Verification (<em>Kₛ</em>, <em>Kₚ</em>) acts as a safety interlock, enforcing physical compliance by deterministically triggering rectification.
+              <strong>Overview of BioProAgent.</strong>
+              <strong>(a)</strong> Cognitive Memory utilizes Symbolic Grounding <em>Φ</em> to manage context efficiently;
+              <strong>(b)</strong> Neural Planner <em>π₀</em> is grounded in a Design-Verify-Rectify FSM<em> Δ(σ)</em>;
+              <strong>(c)</strong> Hierarchical Verification (<em>Kₛ</em>, <em>Kₚ</em>) acts as a safety interlock, enforcing physical compliance by deterministically triggering rectification.
             </p>
           </div>
         </div>
@@ -435,7 +435,13 @@
           </div>
             <div class="content has-text-centered" style="margin-top: 15px; color: #555;">
             <p>
-              Overview of the <strong>BioProBench</strong>.
+              <strong>Overview of BioProBench.</strong>
+                <strong>(a)</strong> A foundational corpus of 27,000 professionally authored protocols;
+                <strong>(b)</strong> A structured dataset of over 550,000 instances derived from this BioProCorpus,
+                which is partitioned into a training set to facilitate model fine-tuning and a held-out test set; and
+                <strong>(c)</strong> A rigorous benchmark with novel, domain-specific metrics to evaluate procedural understanding,
+                such as keyword-based content metrics and embedding-based structural metrics,
+                to accurately quantify procedural knowledge.
             </p>
           </div>
         </div>
