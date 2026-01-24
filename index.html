@@ -116,7 +116,7 @@
           
           <div class="is-size-5 publication-authors">
             <span class="author-block"><strong>Yuyang Liu</strong><sup>1</sup>,</span>
-            <span class="author-block">Liuzhenghao Lv<sup>1</sup>,Xiancheng Zhang<sup>1</sup>, Jingya Wang<sup>1,2</sup></span>
+            <span class="author-block">Liuzhenghao Lv<sup>1</sup>,Xiancheng Zhang<sup>1</sup>, Jingya Wang<sup>1,2</sup>,</span>
             <span class="author-block">Li Yuan<sup>1,2</sup>, Yonghong Tian<sup>1,2</sup></span>
           </div>
           
@@ -372,15 +372,15 @@
                 Abandons rigid linear workflows and adopts a
                 <strong>neuro-symbolic framework</strong> that constrains probabilistic planning via a deterministic
                 <em>Finite State Machine (FSM)</em>. The Agent leverages State-Augmented Planning to flexibly select
-                retrieval, draft generation, or direct code production based on current states — addressing LLMs'
+                retrieval, draft generation, or code production based on current states, addressing LLMs'
                 limitations in handling the rigorous constraints of physical actuation in wet-lab scenarios.
               </li>
       
               <li>
                 🧪 <strong>Scientific Review (Scientific Reflector and Validator)</strong>:
                 Incorporates a strict scientific reflection mechanism (Validator) to automatically check for missing
-                control groups, logical flaws, and parameter rationality. This enforces a rigorous
-                <em>Draft-Verify-Rectify</em> workflow, ensuring the scientific rigor of experimental protocols.
+                control groups, logical flaws, parameter rationality and machine code validity. This enforces a rigorous
+                <em>Draft-Verify-Rectify (DVR)</em> workflow, ensuring the scientific rigor of experimental protocols.
               </li>
       
               <li>
@@ -392,8 +392,8 @@
               <li>
                 💾 <strong>Hybrid Memory System</strong>:
                 <ul>
-                  <li><strong>Short-Term Memory</strong>: Uses <code>execution_results</code> to maintain long-horizon protocol consistency.</li>
-                  <li><strong>Long-Term Memory</strong>: Integrates Mem0 to recall past experimental experiences.</li>
+                  <li><strong>Short-Term Memory</strong>: Combines both <strong>episodic memory</strong>strong> and <strong>working memory</strong>strong> to maintain long-horizon protocol consistency.</li>
+                  <li><strong>Long-Term Memory</strong>: Integrates <strong>Mem0</strong> to recall past experimental experiences.</li>
                 </ul>
               </li>
       
