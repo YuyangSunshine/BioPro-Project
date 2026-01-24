@@ -364,9 +364,48 @@
       <div class="column is-full">
         <h2 class="title is-3">🤖 Method: BioProAgent</h2>
         <div class="content">
-          <p>
+          <h3>🧬 BioProAgent: Neuro-Symbolic Grounding for Constrained Scientific Planning</h3>
+            <h4>✨ Core Features</h4>
+            <ul>
+              <li>
+                🧠 <strong>State-Augmented Adaptive Planning (FSM-Constrained Script-Free Planner)</strong>:
+                Abandons rigid linear workflows and adopts a
+                <strong>neuro-symbolic framework</strong> that constrains probabilistic planning via a deterministic
+                <em>Finite State Machine (FSM)</em>. The Agent leverages State-Augmented Planning to flexibly select
+                retrieval, draft generation, or direct code production based on current states — addressing LLMs'
+                limitations in handling the rigorous constraints of physical actuation in wet-lab scenarios.
+              </li>
+      
+              <li>
+                🧪 <strong>Scientific Review (Scientific Reflector and Validator)</strong>:
+                Incorporates a strict scientific reflection mechanism (Validator) to automatically check for missing
+                control groups, logical flaws, and parameter rationality. This enforces a rigorous
+                <em>Draft-Verify-Rectify</em> workflow, ensuring the scientific rigor of experimental protocols.
+              </li>
+      
+              <li>
+                🤖 <strong>Automation Hardware Alignment</strong>:
+                Reads laboratory device and consumable inventories (CSV), mapping natural language steps to specific
+                machine operations via <strong>Semantic Symbol Grounding</strong>, reducing token consumption by ~6×.
+              </li>
+      
+              <li>
+                💾 <strong>Hybrid Memory System</strong>:
+                <ul>
+                  <li><strong>Short-Term Memory</strong>: Uses <code>execution_results</code> to maintain long-horizon protocol consistency.</li>
+                  <li><strong>Long-Term Memory</strong>: Integrates Mem0 to recall past experimental experiences.</li>
+                </ul>
+              </li>
+      
+              <li>
+                ✋ <strong>Human-in-the-Loop</strong>:
+                Proactively requests user confirmation at critical decision points to ensure safety in high-risk
+                wet-lab operations.
+              </li>
+            </ul>
+          <!-- <p>
             BioProAgent uses a <strong>Design-Verify-Rectify</strong> workflow. The Symbolic FSM acts as a "guardrail" for the Neural LLM, checking state transitions (e.g., volume limits, temperature ranges) in real-time.
-          </p>
+          </p> -->
           <div style="text-align: center; margin: 30px 0;">
             <img src="./static/images/architecture.png" alt="BioProAgent Architecture">
           </div>
