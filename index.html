@@ -499,6 +499,52 @@
   </div>
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">📈 BioProAgent Performance</h2>
+        <div class="content has-text-justified">
+          <p>
+            BioProAgent eliminates the trade-off between scientific reasoning and physical safety[cite: 616]. Compared to state-of-the-art baselines, it excels in hardware compliance, long-horizon stability, and cost-efficiency:
+          </p>
+          <ul>
+            <li><strong>Unmatched Physical Compliance:</strong> Achieves a <strong>95.6%</strong> physical compliance rate, acting as a crucial safety interlock against hallucinations that typically cause ReAct agents to fail catastrophically (21.0%)[cite: 49, 515, 516].</li>
+            <li><strong>Autonomous Self-Correction:</strong> While all standard baseline agents exhibit a 0% correction rate against injected errors, BioProAgent's FSM dynamically overwrites unsafe trajectories, restoring physical safety to <strong>88.7%</strong>[cite: 165, 607, 609, 610].</li>
+            <li><strong>Cost Efficiency:</strong> By decoupling high-dimensional data payloads via Semantic Symbol Grounding, it reduces token consumption by <strong>~82%</strong> compared to AutoGPT, while maintaining a 100% success rate in 60-step long-horizon workflows[cite: 518, 574, 620, 764].</li>
+          </ul>
+        </div>
+        <div style="text-align: center; margin: 30px 0;">
+          <img src="./static/images/results.png" alt="BioProAgent Performance">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background-color: #f9f9f9;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">🔍 Case Study: FSM-Driven Self-Correction</h2>
+        <div class="content has-text-justified">
+          <p>
+            Standard LLM agents operate in an open-loop manner: generating a dangerous parameter (e.g., exceeding centrifuge limits) leads to immediate execution and physical failure[cite: 770]. BioProAgent proactively intercepts these hallucinations.
+          </p>
+        </div>
+        <div style="text-align: center; margin: 30px 0;">
+          <img src="./static/images/case_study.png" alt="Self-Correction Trajectories">
+        </div>
+        <div class="content has-text-centered" style="margin-top: 15px; color: #555; font-size: 0.9rem;">
+          <p>
+            <strong>Figure:</strong> In a physical violation case (a), the Symbolic Rule Engine intercepts an unsafe speed limit (25,000g), forcing a transition to the <code>RECTIFY_CODE</code> state and regenerating code within safe limits (15,000g)[cite: 740, 748, 772, 773]. In a symbol grounding error (b), the system detects an undefined resource ID ("new_plate") and guides the agent to remap it to a validated slot ("plate_1")[cite: 755, 757, 758, 774].
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
 <section class="section" id="BibTeX" style="background-color: #f5f5f5;">
   <div class="container is-max-desktop content">
     <h2 class="title is-3">BibTeX</h2>
