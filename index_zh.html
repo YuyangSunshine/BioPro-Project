@@ -112,13 +112,13 @@
           
           <div class="is-size-5 publication-authors">
             <span class="author-block"><strong>刘宇阳</strong><sup>1</sup>,</span>
-            <span class="author-block">吕刘正昊<sup>1</sup>, 张显程<sup>1</sup>, 王静雅<sup>1,2</sup>,</span>
+            <span class="author-block">吕刘正浩<sup>1</sup>, 张宪成<sup>1</sup>, 汪静雅<sup>1,2</sup>,</span>
             <span class="author-block">袁粒<sup>1,2</sup>, 田永鸿<sup>1,2</sup></span>
           </div>
           
           <div class="is-size-6 publication-authors">
             <span class="author-block"><sup>1</sup>北京大学,</span>
-            <span class="author-block"><sup>2</sup>北京大学人工智能研究院 (AI4S)</span>
+            <span class="author-block"><sup>2</sup>北京大学深圳研究生院</span>
           </div>
 
           <div class="publication-links" style="margin-top: 25px;">
@@ -449,6 +449,53 @@
   </div>
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">📈 BioProAgent 核心性能表现</h2>
+        <div class="content has-text-justified">
+          <p>
+            BioProAgent 打破了传统智能体在“科学推理”与“物理安全”之间无法兼顾的困局 [cite: 615, 616]。与最先进的基准模型相比，它在硬件合规性、长序列稳定性以及成本效率方面表现出显著优势：
+          </p>
+          <ul>
+            <li><strong>极高的物理合规性：</strong> 达到了 <strong>95.6%</strong> 的物理操作合规率，成为抵御“模型幻觉”的关键安全联锁机制（相比之下，ReAct 智能体因安全崩溃仅获得 21.0% 的合规率）[cite: 49, 515, 516]。</li>
+            <li><strong>自主纠错与自愈：</strong> 当面对注入的错误时，所有标准基准智能体的纠错率均为 0%；而 BioProAgent 通过 FSM 动态覆盖不安全的轨迹，将物理安全恢复率提升至 <strong>88.7%</strong> [cite: 165, 607, 609, 610]。</li>
+            <li><strong>极致的成本效率：</strong> 通过语义符号接地机制解耦高维数据载荷，在维持 60 步长视野任务 100% 成功率的同时，将 Token 消耗比 AutoGPT 降低了 <strong>约 82%</strong> [cite: 518, 574, 620, 764]。</li>
+          </ul>
+        </div>
+        <div style="text-align: center; margin: 30px 0;">
+          <img src="./static/images/results.png" alt="BioProAgent 性能数据">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background-color: #f9f9f9;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">🔍 案例展示：FSM 驱动的自我纠错</h2>
+        <div class="content has-text-justified">
+          <p>
+            标准的 LLM 智能体通常在开环状态下运行：一旦生成危险的幻觉参数（例如离心机转速超限），就会直接执行并导致物理损坏 [cite: 770]。而 BioProAgent 能够主动拦截并修复这些致命幻觉。
+          </p>
+        </div>
+        <div style="text-align: center; margin: 30px 0;">
+          <img src="./static/images/case_study.png" alt="自我纠错轨迹">
+        </div>
+        <div class="content has-text-centered" style="margin-top: 15px; color: #555; font-size: 0.9rem;">
+          <p>
+            <strong>图例：</strong> 在物理违规案例 (a) 中，符号规则引擎拦截了不安全的超限转速 (25,000g)，强制状态机流转至 <code>RECTIFY_CODE</code> 状态，并重新生成了安全限度内的代码 (15,000g) [cite: 740, 748, 772, 773]。在符号接地错误案例 (b) 中，系统检测到未定义的资源 ID ("new_plate")，并引导智能体将其重新映射至已验证的物理槽位 ("plate_1") [cite: 755, 757, 758, 774]。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
 <section class="section" id="BibTeX" style="background-color: #f5f5f5;">
   <div class="container is-max-desktop content">
     <h2 class="title is-3">引用 (BibTeX)</h2>
