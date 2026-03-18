@@ -24,13 +24,6 @@ Our work consists of two major components:
 * **Self-Healing:** Demonstrates an **88.7%** success rate in autonomous error recovery for physical and logic violations.
 * **High Efficiency:** Reduces token consumption by **~82%** in long-horizon tasks via Semantic Symbol Grounding.
 
-### 🛠️ Quick Start
-*(Provide your installation steps, environment setup, and basic usage scripts here)*
-```bash
-git clone [https://github.com/YuyangSunshine/bioprotocolbench.git](https://github.com/YuyangSunshine/bioprotocolbench.git)
-cd bioprotocolbench
-pip install -r requirements.txt
-````
 
 ### 📝 Citation
 
@@ -73,15 +66,6 @@ If you find our data or framework useful, please cite our papers:
   * **自主纠错:** 在面临物理和逻辑违规注入时，展现了 **88.7%** 的自主错误恢复率。
   * **极高效率:** 通过语义符号接地技术，在长序列任务中将 Token 消耗降低了约 **82%**。
 
-### 🛠️ 快速开始
-
-*(在这里补充你的安装步骤、环境配置和基础运行脚本)*
-
-```bash
-git clone [https://github.com/YuyangSunshine/bioprotocolbench.git](https://github.com/YuyangSunshine/bioprotocolbench.git)
-cd bioprotocolbench
-pip install -r requirements.txt
-```
 
 ### 📝 引用
 
