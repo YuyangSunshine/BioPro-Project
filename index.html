@@ -96,12 +96,18 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
       max-width: 100%;
     }
+
+    /* 导航栏与平滑滚动优化 */
+    html { scroll-behavior: smooth; }
+    .navbar { border-bottom: 1px solid #eaeaea; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    /* 防止锚点跳转时被顶部固定导航栏遮挡 */
+    section { scroll-margin-top: 4rem; }
   </style>
 </head>
 
-<body>
+<body class="has-navbar-fixed-top">
 
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
@@ -164,7 +170,7 @@
   </div>
 </section>
 
-<section class="section" style="padding-top: 0;">
+<section class="section" id="latest" style="padding-top: 0;">
   <div class="container is-max-desktop">
     <div class="news-box">
       <div class="news-title"><i class="fas fa-bullhorn"></i> Latest News</div>
@@ -173,7 +179,7 @@
   </div>
 </section>
 
-<section class="section" style="padding-top: 0;">
+<section class="section" id="video" style="padding-top: 0;">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full">
@@ -193,7 +199,7 @@
   </div>
 </section>
 
-<section class="section" style="background-color: #f5f5f5;">
+<section class="section" id="abstract" style="background-color: #f5f5f5;">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -210,7 +216,7 @@
   </div>
 </section>
 
-<section class="section" >
+<section class="section" id="dataset">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
@@ -407,7 +413,7 @@
 
 <hr style="margin: 50px 0;">
 
-<section class="section">
+<section class="section" id="method">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -499,7 +505,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="performance">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
