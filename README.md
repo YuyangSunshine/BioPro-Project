@@ -54,7 +54,7 @@ If you find our data or framework useful, please cite our papers:
 
 ---
 
-<h2 id="chinese"\>中文\</h2\>
+<h2 id="chinese">中文\</h2>
 
 欢迎来到 **BioProSuite** 的官方代码仓库。本项目旨在解决自主生物湿实验中大语言模型 (LLM) 推理与物理执行之间的巨大鸿沟。
 
