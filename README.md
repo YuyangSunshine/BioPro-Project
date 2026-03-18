@@ -1,6 +1,6 @@
 # BioProSuite: Towards Reliable Autonomous Wet-Lab Experimentation 🧪🤖
 
-[![Webpage](https://img.shields.io/badge/Project-Webpage-blue.svg)](https://yuyangsulphur.github.io/bioprotocolbench/) [![Paper (Agent)](https://img.shields.io/badge/Paper-BioProAgent-red.svg)](https://arxiv.org/abs/2603.00876)
+[![Webpage](https://img.shields.io/badge/Project-Webpage-blue.svg)](https://yuyangsunshine.github.io/BioPro-Project/) [![Paper (Agent)](https://img.shields.io/badge/Paper-BioProAgent-red.svg)](https://arxiv.org/abs/2603.00876)
 [![Paper (Bench)](https://img.shields.io/badge/Paper-BioProBench-red.svg)](https://arxiv.org/abs/2505.07889)
 [![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-BioProBench-yellow)](https://huggingface.co/BioProBench)
 
@@ -52,9 +52,9 @@ If you find our data or framework useful, please cite our papers:
 }
 ```
 
------
+---
 
-\<h2 id="chinese"\>中文\</h2\>
+<h2 id="chinese"\>中文\</h2\>
 
 欢迎来到 **BioProSuite** 的官方代码仓库。本项目旨在解决自主生物湿实验中大语言模型 (LLM) 推理与物理执行之间的巨大鸿沟。
 
