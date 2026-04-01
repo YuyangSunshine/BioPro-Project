@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BioProSuite锛氭櫤鑳戒綋涓庡熀鍑嗘祴璇?/title>
+  <title>BioProSuite: 智能体与基准</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -11,9 +11,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
   <style>
-    body { font-family: 'Noto Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif; background-color: #fcfcfc; }
+    body { font-family: 'Noto Sans', sans-serif; background-color: #fcfcfc; }
     
-    /* 鏍囬閮ㄥ垎浼樺寲 */
+    /* 标题部分优化 */
     .publication-title {
       font-family: 'Google Sans', sans-serif;
       font-weight: 700;
@@ -28,7 +28,7 @@
     .publication-authors a { color: #333; transition: color 0.3s; }
     .publication-authors a:hover { color: #209cff; }
     
-    /* 鎸夐挳缁?*/
+    /* 按钮组 */
     .link-block a {
       color: #363636;
       border: 1px solid #dcdcdc;
@@ -41,7 +41,7 @@
       border-color: #363636;
     }
 
-    /* 瑙嗛瀹瑰櫒 */
+    /* 视频容器 - 增加阴影和圆角 */
     .video-container {
       border-radius: 10px;
       overflow: hidden;
@@ -50,7 +50,7 @@
       background: #000;
     }
     
-    /* News 鍖哄煙 */
+    /* News 区域 (参考 ChemCoTBench) */
     .news-box {
       background-color: #f0f7ff;
       border-left: 5px solid #209cff;
@@ -62,7 +62,7 @@
     .news-title { font-weight: bold; color: #1c5b8d; margin-bottom: 5px; }
     .news-item { font-size: 0.95rem; margin-bottom: 3px; }
 
-    /* 琛ㄦ牸鏍峰紡 */
+    /* 表格样式 (Leaderboard) */
     .table-container {
       margin-top: 20px;
       border-radius: 8px;
@@ -79,30 +79,40 @@
     .subset-panel.is-active { display: block; }
     .result-figure {
       width: 100%;
-      max-width: 760px;
+      max-width: 560px;
       height: auto;
     }
     @media (max-width: 768px) {
       .result-figure { max-width: 100%; }
     }
+    .best-score { font-weight: bold; color: #d32f2f; }
+    .second-score { font-weight: bold; color: #1976d2; }
 
-    /* 绔犺妭閫氱敤鏍峰紡 */
-    .section-header { text-align: center; margin-bottom: 40px; }
+    /* 章节通用样式 */
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #333;
+    }
     .container.is-max-desktop { max-width: 960px; }
     
-    /* 鍥剧墖鑷€傚簲 */
+    /* 图片自适应 */
     .content img {
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
       max-width: 100%;
     }
-    
-   /* 瀵艰埅鏍忎笌骞虫粦婊氬姩浼樺寲 */
+
+    /* 导航栏与平滑滚动优化 */
     html { scroll-behavior: smooth; }
     .navbar { border-bottom: 1px solid #eaeaea; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-    /* 闃叉閿氱偣璺宠浆鏃惰椤堕儴鍥哄畾瀵艰埅鏍忛伄鎸?*/
+    /* 防止锚点跳转时被顶部固定导航栏遮挡 */
     section { scroll-margin-top: 4rem; }
-
   </style>
 </head>
 
@@ -120,7 +130,7 @@
         <a class="navbar-item" href="#abstract">摘要</a>
         <a class="navbar-item" href="#dataset">数据集</a>
         <a class="navbar-item" href="#Leaderboard">排行榜</a>
-        <a class="navbar-item" href="#extend-bioprobench">Extend</a>
+        <a class="navbar-item" href="#extend-bioprobench">扩展榜单</a>
         <a class="navbar-item" href="#Method">方法</a>
         <a class="navbar-item" href="#BibTeX">BibTeX</a>
       </div>
@@ -135,9 +145,9 @@
     </div>
   </div>
 </nav>
-
+  
 <section class="hero" id="hero">
-  <div class="hero-body" style="padding-top: 1rem;">
+  <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
@@ -146,54 +156,55 @@
             BioProSuite
           </h1>
           <h3 class="subtitle is-4" style="color: #666; margin-top: 10px;">
-            杩堝悜鍙潬鐨勮嚜涓诲寲婀垮疄楠?          </h3>
+            迈向可靠的湿实验自主执行
+          </h3>
           
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><a href="https://yuyangsunshine.github.io/" target="_blank"><strong>鍒樺畤闃?/strong></a><sup>1,2</sup>,</span>
-            <span class="author-block">鍚曞垬姝ｆ旦<sup>1,2</sup>, 寮犲鎴?sup>1,2</sup>, 姹潤闆?sup>1,2</sup>,</span>
-            <span class="author-block">琚佺矑<sup>1,2</sup>, 鐢版案楦?sup>1,2</sup></span>
+            <span class="author-block"><a href="https://yuyangsunshine.github.io/" target="_blank"><strong>刘宇阳</strong></a><sup>1</sup>,</span>
+            <span class="author-block">吕刘正浩<sup>1</sup>,张宪成<sup>1</sup>, 汪静雅<sup>1,2</sup>,</span>
+            <span class="author-block">袁粒<sup>1,2</sup>, 田永鸿<sup>1,2</sup></span>
           </div>
           
           <div class="is-size-6 publication-authors">
-            <span class="author-block"><sup>1</sup>鍖椾含澶у,</span>
-            <span class="author-block"><sup>2</sup>鍖椾含澶у娣卞湷鐮旂┒鐢熼櫌</span>
+            <span class="author-block"><sup>1</sup>Peking University,</span>
+            <span class="author-block"><sup>2</sup>School of AI4S</span>
           </div>
 
           <div class="publication-links" style="margin-top: 25px;">
             <span class="link-block">
-              <a href=".https://arxiv.org/html/2603.00876v1" class="button is-rounded">
+              <a href="https://arxiv.org/html/2603.00876v1" class="button is-rounded">
                 <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                <span>Agent 璁烘枃</span>
+                <span>智能体论文</span>
               </a>
             </span>
             <span class="link-block">
               <a href="https://arxiv.org/abs/2505.07889" class="button is-rounded">
                 <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                <span>Benchmark 璁烘枃</span>
+                <span>基准论文</span>
               </a>
             </span>
             <span class="link-block">
               <a href="https://github.com/YuyangSunshine/bioprotocolbench" class="button is-rounded">
                 <span class="icon"><i class="fab fa-github"></i></span>
-                <span>浠ｇ爜</span>
+                <span>代码</span>
               </a>
             </span>
             <span class="link-block">
               <a href="https://huggingface.co/BioProBench" class="button is-rounded">
-                <span class="icon"><i class="fas fa-database"></i></span>
-                <span>鏁版嵁</span>
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>数据</span>
               </a>
             </span>
             <span class="link-block">
               <a href="#Leaderboard" class="button is-rounded">
                 <span class="icon"><i class="fas fa-chart-bar"></i></span>
-                <span>鎺掕姒?/span>
+                <span>排行榜</span>
               </a>
             </span>
             <span class="link-block">
               <a href="https://ai4slab.pkusz.edu.cn/" target="_blank" class="button is-rounded is-link is-light" style="border-color: #3273dc;">
                 <span class="icon"><i class="fas fa-flask"></i></span>
-                <span>鍦?AI4S LAB 璇曠敤</span>
+                <span>在 AI4S LAB 体验</span>
               </a>
             </span>
           </div>
@@ -207,25 +218,35 @@
 <section class="section" id="latest" style="padding-top: 0;">
   <div class="container is-max-desktop">
     <div class="news-box">
-      <div class="news-title"><i class="fas fa-bullhorn"></i> 鏈€鏂板姩鎬?/div>
-
-      <div class="news-item">
-        馃敩 <strong>[2026-04-01]</strong> ICML Rebuttal 鏇存柊锛氭垜浠柊澧炰簡 <strong>gpt-5.4-2026-03-05</strong>銆?strong>gemini-3-flash-preview-nothinking</strong>銆?strong>claude-sonnet-4-5-20250929</strong> 鍦?PQA/ERR/ORD/GEN 鍥涢」浠诲姟涓婄殑璇勬祴缁撴灉銆?      </div>
-
-      <div class="news-item">
-        馃敟 <strong>[2026-03-18]</strong> 鎴戜滑鐨?BioProAgent 宸插湪 AI4S LAB 骞冲彴姝ｅ紡涓婄嚎锛?a href="https://ai4slab.pkusz.edu.cn/" target="_blank"><strong>娆㈣繋鍓嶅線浣撻獙骞朵笅鍗曡嚜鍔ㄥ寲婀垮疄楠?/strong></a>銆?      </div>
-
-      <div class="news-item">
-        馃帀 <strong>[2026-03-03]</strong> 鎴戜滑鐨?BioProAgent 琚?a href="https://lifelongagent.github.io/" target="_blank"><strong>ICLR 2026 LLA Workshop</strong>鎺ユ敹锛?/a>銆?      </div>
+      <div class="news-title"><i class="fas fa-bullhorn"></i> 最新动态</div>
       
       <div class="news-item">
-        馃搫 <strong>[2026-03-01]</strong> BioProAgent 鐨勮鏂囬鍗版湰宸插湪 <a href="https://arxiv.org/abs/2603.00876" target="_blank">arXiv</a> 鍙戝竷銆?      </div>
+        <strong>[2026-04-01]</strong> ICML Rebuttal 更新：我们新增了 <strong>gpt-5.4-2026-03-05</strong>、<strong>gemini-3-flash-preview-nothinking</strong> 和 <strong>claude-sonnet-4-5-20250929</strong> 在 PQA/ERR/ORD/GEN 四项任务上的评测结果。
+      </div>
+
+      <div class="news-item">
+        <strong>[2026-03-31]</strong> 数据划分更新：我们已正式发布各任务（PQA、ORD、ERR、GEN、REA）的 Train/Test 划分，便于社区进行一致的训练与评测。
+      </div>
       
       <div class="news-item">
-        馃摑 <strong>[2026-01-21]</strong> 鎴戜滑鐨?BioProBench 璁烘枃杩涜浜嗘洿鏂般€?      </div>
+        <strong>[2026-03-18]</strong> BioProAgent 已上线 AI4S LAB！<a href="https://ai4slab.pkusz.edu.cn/" target="_blank"><strong>欢迎试用并在此下单湿实验</strong></a>。
+      </div>
+
+      <div class="news-item">
+        <strong>[2026-03-03]</strong> BioProAgent 已被 <a href="https://lifelongagent.github.io/" target="_blank"><strong>ICLR 2026 LLA Workshop</strong></a> 接收。
+      </div>     
       
       <div class="news-item">
-        馃殌 <strong>[2025-12]</strong> 浠ｇ爜涓庢暟鎹泦 (v1.0) 宸插湪 GitHub 寮€婧愬彂甯冦€?      </div>
+        <strong>[2026-03-01]</strong> BioProAgent 论文预印本已发布在 <a href="https://arxiv.org/abs/2603.00876" target="_blank">arXiv</a>。
+      </div>
+      
+      <div class="news-item">
+        <strong>[2026-01-21]</strong> BioProBench 论文已更新。
+      </div>
+      
+      <div class="news-item">
+        <strong>[2025-12]</strong> 代码与数据集（v1.0）已在 GitHub 发布。
+      </div>
       
     </div>
   </div>
@@ -242,11 +263,13 @@
         </div>
         <div class="content has-text-centered" style="margin-top: 15px; color: #555;">
           <p>
-            <strong>AI4S LAB</strong>锛氬叏鐞冮涓€滀竴绔欏紡鈥濇暟瀛楁櫤鑳界敓鍛界瀛︾爺绌跺钩鍙般€?            AI4S LAB 娣卞害铻嶅悎绠楀姏銆佹暟鎹€佹ā鍨嬩笌瀹為獙锛屽疄鐜颁簡鈥滅悊璁洪娴?鈫?瀹為獙璁捐 鈫?鑷姩鍖栨墽琛?鈫?鏁版嵁鍒嗘瀽鈥濈殑瀹屾暣闂幆銆?          </p>
+            <strong>AI4S LAB</strong>：全球首个“一站式”数字智能生命科学研究平台。
+            AI4S LAB 深度整合算力、数据、模型与实验，形成“理论预测 → 实验设计 → 自动执行 → 数据分析”的闭环流程。
+          </p>
           <div style="margin-top: 15px;">
             <a href="https://ai4slab.pkusz.edu.cn/" target="_blank" class="button is-info is-outlined is-rounded">
               <span class="icon"><i class="fas fa-external-link-alt"></i></span>
-              <span>璁块棶骞冲彴骞朵綋楠岃嚜鍔ㄥ寲婀垮疄楠?/span>
+              <span>访问平台并下单实验</span>
             </a>
           </div>
         </div>
@@ -255,14 +278,17 @@
   </div>
 </section>
 
-<section class="section" id="method" style="background-color: #f5f5f5;">
+<section class="section" id="abstract" style="background-color: #f5f5f5;">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">鐮旂┒鎽樿</h2>
+        <h2 class="title is-3">摘要</h2>
         <div class="content has-text-justified">
           <p>
-            澶у瀷璇█妯″瀷锛圠LMs锛夊湪澶勭悊瀵瑰噯纭€ц姹傛瀬楂樼殑鐢熺墿瀹為獙鑽夋锛圥rotocols锛夋椂缂轰箯鍙潬鎬э紝杩欎弗閲嶉樆纰嶄簡绉戝瀹為獙鐨勮嚜鍔ㄥ寲杩涚▼銆?            涓烘锛屾垜浠鍏堝紩鍏ヤ簡鍖呭惈 55 涓囦换鍔″疄渚嬬殑 <strong>BioProBench</strong> 鍩哄噯娴嬭瘯锛屼互鎻ず鐜版湁妯″瀷鐨勬帹鐞嗛缚娌燂紱杩涜€屾彁鍑轰簡绁炵粡绗﹀彿鏅鸿兘浣撴鏋?<strong>BioProAgent</strong>銆?            閫氳繃灏嗘鐜囨€х殑瑙勫垝杩囩▼閿氬畾鍦ㄧ‘瀹氭€х殑鏈夐檺鐘舵€佹満锛團SM锛変腑锛屾垜浠殑鏅鸿兘浣撹兘澶熺‘淇濈‖浠舵搷浣滅殑鐗╃悊鍚堣鎬э紝骞跺湪鎬ц兘涓婃樉钁楄秴瓒婁簡浠?GPT-4 涓轰唬琛ㄧ殑鍩哄噯妯″瀷銆?          </p>
+            科学实验自动化受阻于 LLM 难以稳定处理对精度要求极高的生物实验流程。
+            我们提出 <strong>BioProBench</strong>（55 万任务样本）以揭示推理鸿沟，并提出神经符号框架 <strong>BioProAgent</strong>。
+            通过将概率规划锚定在确定性的有限状态机（FSM）上，BioProAgent 在确保硬件合规的同时，显著优于 GPT-4 等基线。
+          </p>
         </div>
       </div>
     </div>
@@ -273,18 +299,23 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-        <h2 class="title is-3">馃К 鏁版嵁闆? BioProBench</h2>
+        <h2 class="title is-3">🧬 数据集：BioProBench</h2>
         <div class="content has-text-justified">
           <p>
-            鎴戜滑鎻愬嚭浜?BioProBench锛岃繖鏄涓笓娉ㄤ簬鐢熺墿瀹為獙鑽夋杩囩▼鎺ㄧ悊鐨勫ぇ瑙勬ā璧勬簮搴撱€傚畠鍖呭惈涓€涓敱杩?<strong>27,000 浠?/strong>涓撲笟瀹為獙鑽夋缁勬垚鐨勮鏂欏簱 (BioProCorpus)锛屼互鍙婄敱姝よ鐢熷嚭鐨勮秴杩?<strong>550,000 涓粨鏋勫寲瀹炰緥</strong>锛岃鐩栦簡鐢熺墿瀛︾殑澶氫釜瀛愰鍩熴€?          </p>
+            我们提出 BioProBench，这是首个面向生物实验流程程序化推理的大规模资源，
+            包含近 <strong>27,000 份 protocol</strong> 与超过 <strong>550,000 条结构化样本</strong>，
+            覆盖生物学多个子领域。
+          </p>
           <div style="text-align: center; margin: 30px 0;">
-            <img src="./static/images/stats.png" alt="BioProBench 缁熻鏁版嵁">
+            <img src="./static/images/stats.png" alt="BioProBench Statistics">
           </div>
             <div class="content has-text-centered" style="margin-top: 15px; color: #555;">
             <p>
-              <strong>BioProBench 姒傝锛?/strong>
-                <strong>(a)</strong> 鍖呭惈 27,000 浠戒笓涓氳崏妗堢殑鍩虹璇枡搴擄紱
-                <strong>(b)</strong> 琛嶇敓鍑虹殑 550,000+ 缁撴瀯鍖栨暟鎹泦锛屽凡鍒掑垎涓鸿缁冮泦锛堢敤浜庢ā鍨嬪井璋冿級鍜屼繚鐣欐祴璇曢泦锛?                <strong>(c)</strong> 涓€涓弗璋ㄧ殑鍩哄噯娴嬭瘯锛屽紩鍏ヤ簡鍩轰簬鍏抽敭璇嶅唴瀹瑰拰鍩轰簬宓屽叆缁撴瀯鐨勬柊鍨嬬壒瀹氶鍩熻瘎浼版寚鏍囷紝鏃ㄥ湪鍑嗙‘閲忓寲绋嬪簭鎬х煡璇嗙殑鎺屾彙绋嬪害銆?            </p>
+              <strong>BioProBench 概览。</strong>
+                <strong>(a)</strong> 由 27,000 份专业撰写 protocol 构成的基础语料；
+                <strong>(b)</strong> 基于 BioProCorpus 构建的超过 550,000 条结构化数据集，并划分为用于微调的训练集与保留测试集；以及
+                <strong>(c)</strong> 一个带有新颖领域指标的严格基准，用于评估流程理解能力，包括基于关键词的内容指标与基于嵌入的结构指标，从而更准确地量化程序性知识。
+            </p>
           </div>
         </div>
       </div>
@@ -295,11 +326,14 @@
 <section class="section" id="Leaderboard">
   <div class="container is-max-desktop">
     <div class="section-header has-text-centered">
-      <h2 class="title is-3">馃弳 BioProBench 鎺掕姒?/h2>
+      <h2 class="title is-3">🏆 BioProBench 排行榜</h2>
       <div class="content has-text-justified">
+        <!-- <p class="subtitle is-5" style="color: #666;"> -->
         <p>
-          鎴戜滑鐨勬帓琛屾浣跨敤浜嗙壒瀹氶鍩熺殑鏂板瀷璇勪及鎸囨爣锛屽涓绘祦 LLM 杩涜浜嗗叏闈㈣瘎浼帮紝鏀寔瀵硅繃绋嬫帹鐞嗚兘鍔涜繘琛岀粏绮掑害鍒嗘瀽銆?          缁撴灉鎻ず浜嗙幇鏈夋ā鍨嬪湪鐞嗚В銆佹帹鐞嗗拰鐢熸垚绉戝鑽夋鏂归潰瀛樺湪鐨勭郴缁熸€х己闄枫€備富瑕佹兜鐩栧洓涓换鍔＄被鍒細
-          <span class="tag is-light">PQA (闂瓟)</span> <span class="tag is-light">ERR (绾犻敊)</span> <span class="tag is-light">ORD (鎺掑簭)</span> <span class="tag is-light">GEN (鐢熸垚)</span>銆?        </p>
+          我们的基准排行榜基于新颖的领域指标，对主流 LLM 进行全面评估，可细粒度分析流程推理性能。
+          它揭示了模型在科学 protocol 的理解、推理与生成方面的系统性短板，覆盖四类任务：
+          <span class="tag is-light">PQA</span> <span class="tag is-light">ERR</span> <span class="tag is-light">ORD</span> <span class="tag is-light">GEN</span>.
+        </p>
       </div>
     </div>
 
@@ -308,7 +342,7 @@
         
         <div class="tabs is-centered is-boxed">
           <ul>
-            <li class="is-active"><a><span>涓绘帓琛屾 (Main Leaderboard)</span></a></li>
+            <li class="is-active"><a><span>主榜单</span></a></li>
             </ul>
         </div>
 
@@ -316,12 +350,12 @@
           <table class="table is-fullwidth is-striped is-hoverable leaderboard-table">
             <thead>
               <tr style="background-color: #f9f9f9;">
-                <th style="width: 20%;">妯″瀷</th>
-                <th style="width: 15%;">绫诲瀷</th>
-                <th class="has-text-centered" title="杩囩▼寮忛棶绛?(鍑嗙‘鐜?">PQA (Acc)</th>
-                <th class="has-text-centered" title="绾犻敊 (鍑嗙‘鐜?">ERR (Acc)</th>
-                <th class="has-text-centered" title="姝ラ鎺掑簭 (Kendall-Tau)">ORD (蟿)</th>
-                <th class="has-text-centered" title="鑽夋鐢熸垚 (BLEU)">GEN (BLEU)</th>
+                <th style="width: 20%;">模型</th>
+                <th style="width: 15%;">类型</th>
+                <th class="has-text-centered" title="Procedural QA (Accuracy)">PQA (Acc)</th>
+                <th class="has-text-centered" title="Error Correction (Accuracy)">ERR (Acc)</th>
+                <th class="has-text-centered" title="Ordering (Kendall-Tau)">ORD (τ)</th>
+                <th class="has-text-centered" title="Generation (BLEU)">GEN (BLEU)</th>
               </tr>
             </thead>
             <tbody>
@@ -330,16 +364,16 @@
                   Bioproagent
                   <span class="icon has-text-warning"><i class="fas fa-crown"></i></span>
                 </td>
-                <td><span class="tag is-info is-light">鎴戜滑鐨勬柟娉?/span></td>
-                <td class="has-text-centered">85.08 馃</td> <td class="has-text-centered">81.55 馃</td> <td class="has-text-centered">0.891 馃</td> <td class="has-text-centered">16.37 馃</td> </tr>
+                <td><span class="tag is-info is-light">我们的方法</span></td>
+                <td class="has-text-centered">85.08 🥇</td> <td class="has-text-centered">81.55 🥇</td> <td class="has-text-centered">0.891 🥇</td> <td class="has-text-centered">16.37 🥇</td> </tr>
               
               <tr style="border-top: 2px solid #dbdbdb;">
-                <td colspan="6" style="padding: 5px; font-size: 0.8rem; color: #888; text-align: center;">闂簮妯″瀷 (Closed Source)</td>
+                <td colspan="6" style="padding: 5px; font-size: 0.8rem; color: #888; text-align: center;">闭源模型</td>
               </tr>
               
               <tr>
                 <td>gemini-3-flash-preview-nothinking</td>
-                <td><span class="tag is-info is-light">闂簮鍟嗕笟</span></td>
+                <td><span class="tag is-info is-light">闭源</span></td>
                 <td class="has-text-centered">73.33</td>
                 <td class="has-text-centered">65.08</td>
                 <td class="has-text-centered">0.8096</td>
@@ -348,7 +382,7 @@
               
               <tr>
                 <td>claude-sonnet-4-5-20250929</td>
-                <td><span class="tag is-info is-light">闂簮鍟嗕笟</span></td>
+                <td><span class="tag is-info is-light">闭源</span></td>
                 <td class="has-text-centered">68.02</td>
                 <td class="has-text-centered">63.17</td>
                 <td class="has-text-centered">0.7730</td>
@@ -357,7 +391,7 @@
 
               <tr>
                 <td>gpt-5.4-2026-03-05</td>
-                <td><span class="tag is-info is-light">闂簮鍟嗕笟</span></td>
+                <td><span class="tag is-info is-light">闭源</span></td>
                 <td class="has-text-centered">70.67</td>
                 <td class="has-text-centered">63.58</td>
                 <td class="has-text-centered">0.7270</td>
@@ -366,7 +400,7 @@
 
               <tr>
                 <td>Gemini-2.5-Pro</td>
-                <td><span class="tag is-info is-light">闂簮鍟嗕笟</span></td>
+                <td><span class="tag is-info is-light">闭源</span></td>
                 <td class="has-text-centered">70.27</td>
                 <td class="has-text-centered">64.83</td>
                 <td class="has-text-centered">0.810</td>
@@ -375,7 +409,7 @@
 
               <tr>
                 <td>Claude-3.7-Sonnet</td>
-                <td><span class="tag is-info is-light">闂簮鍟嗕笟</span></td>
+                <td><span class="tag is-info is-light">闭源</span></td>
                 <td class="has-text-centered">63.90</td>
                 <td class="has-text-centered">60.93</td>
                 <td class="has-text-centered">0.734</td>
@@ -384,7 +418,7 @@
 
               <tr>
                 <td>GPT-4o</td>
-                <td><span class="tag is-info is-light">闂簮鍟嗕笟</span></td>
+                <td><span class="tag is-info is-light">闭源</span></td>
                 <td class="has-text-centered">63.50</td>
                 <td class="has-text-centered">62.67</td>
                 <td class="has-text-centered">0.627</td>
@@ -393,7 +427,7 @@
 
               <tr>
                 <td>Gemini-2.0-Flash</td>
-                <td><span class="tag is-info is-light">闂簮鍟嗕笟</span></td>
+                <td><span class="tag is-info is-light">闭源</span></td>
                 <td class="has-text-centered">63.44</td>
                 <td class="has-text-centered">58.67</td>
                 <td class="has-text-centered">0.637</td>
@@ -402,7 +436,7 @@
 
               <tr>
                 <td>GPT-4-Turbo</td>
-                <td><span class="tag is-info is-light">闂簮鍟嗕笟</span></td>
+                <td><span class="tag is-info is-light">闭源</span></td>
                 <td class="has-text-centered">57.92</td>
                 <td class="has-text-centered">56.17</td>
                 <td class="has-text-centered">0.528</td>
@@ -411,7 +445,7 @@
 
               <tr>
                 <td>o3-mini</td>
-                <td><span class="tag is-info is-light">闂簮鍟嗕笟</span></td>
+                <td><span class="tag is-info is-light">闭源</span></td>
                 <td class="has-text-centered">65.67 </td>
                 <td class="has-text-centered">62.33</td>
                 <td class="has-text-centered">0.733</td>
@@ -419,43 +453,43 @@
               </tr>
 
               <tr style="border-top: 2px solid #dbdbdb;">
-                <td colspan="6" style="padding: 5px; font-size: 0.8rem; color: #888; text-align: center;">寮€婧愭ā鍨?(Open Source)</td>
+                <td colspan="6" style="padding: 5px; font-size: 0.8rem; color: #888; text-align: center;">开源模型</td>
               </tr>
 
               <tr>
                 <td>DeepSeek-R1</td>
-                <td><span class="tag is-success is-light">寮€婧愭潈閲?/span></td>
-                <td class="has-text-centered">67.83 馃</td>
+                <td><span class="tag is-success is-light">开源</span></td>
+                <td class="has-text-centered">67.83 🥉</td>
                 <td class="has-text-centered">62.92</td>
-                <td class="has-text-centered">0.745 馃</td>
+                <td class="has-text-centered">0.745 🥉</td>
                 <td class="has-text-centered">8.62</td>
               </tr>
               
               <tr>
                 <td>DeepSeek-V3</td>
-                <td><span class="tag is-success is-light">寮€婧愭潈閲?/span></td>
+                <td><span class="tag is-success is-light">开源</span></td>
                 <td class="has-text-centered">66.58</td>
                 <td class="has-text-centered">58.58</td>
                 <td class="has-text-centered">0.640</td>
-                <td class="has-text-centered">9.37 馃</td>
+                <td class="has-text-centered">9.37 🥉</td>
               </tr>
 
               <tr>
                 <td>QwQ-32b</td>
-                <td><span class="tag is-success is-light">寮€婧愭潈閲?/span></td>
+                <td><span class="tag is-success is-light">开源</span></td>
                 <td class="has-text-centered">63.67</td>
-                <td class="has-text-centered">63.00 馃</td>
+                <td class="has-text-centered">63.00 🥉</td>
                 <td class="has-text-centered">0.705</td>
                 <td class="has-text-centered">8.40</td>
               </tr>
 
               <tr>
                 <td>Qwen-2.5-72b-instruct</td>
-                <td><span class="tag is-success is-light">寮€婧愭潈閲?/span></td>
+                <td><span class="tag is-success is-light">开源</span></td>
                 <td class="has-text-centered">65.30</td>
                 <td class="has-text-centered">59.17</td>
                 <td class="has-text-centered">0.657</td>
-                <td class="has-text-centered">10.27 馃</td>
+                <td class="has-text-centered">10.27 🥈</td>
               </tr>
 
             </tbody>
@@ -463,15 +497,18 @@
           
           <div class="content is-small has-text-grey-light has-text-centered" style="margin-top: 10px;">
             <p>
-              鏁版嵁鎻愬彇鑷鏂?<i>BioProBench: Comprehensive Dataset and Benchmark in Biological Protocol Understanding and Reasoning</i>銆?            </p>
+              * <b>PQA</b>：流程问答，<b>ERR</b>：错误识别/纠正，<b>ORD</b>：步骤排序，<b>GEN</b>：流程生成。<br>
+              数据来自 <i>BioProBench: Comprehensive Dataset and Benchmark in Biological Protocol Understanding and Reasoning</i>。
+            </p>
           </div>
         </div>
       </div>
       
       <div class="notification is-warning is-light has-text-centered" style="margin-top: 20px;">
         <span class="icon"><i class="fas fa-robot"></i></span>
-        <strong>鎯崇湅鐪嬫垜浠槸濡備綍鐮村眬鐨勫悧锛?/strong> 
-        鐪嬬湅 <a href="#Method">BioProAgent</a> 鏄浣曞～琛ヤ笂杩版帹鐞嗛缚娌燂紝骞跺湪鏅鸿兘浣撴墽琛屼换鍔′笂瀹炵幇 <strong>100% 鎴愬姛鐜?/strong> 鐨勩€?      </div>
+        <strong>想看解决方案吗？</strong> 
+        看看 <a href="#Method">BioProAgent</a> 如何弥补上述推理缺口，并在智能体执行任务上实现 <strong>100% 成功率</strong>。
+      </div>
       
     </div>
   </div>
@@ -480,15 +517,15 @@
 <section class="section" id="extend-bioprobench" style="background-color: #f8fbff;">
   <div class="container is-max-desktop">
     <div class="section-header has-text-centered">
-      <h2 class="title is-3">馃И Extended BioProBench Leaderboard</h2>
+      <h2 class="title is-3">🧪 Extended BioProBench 排行榜</h2>
       <div class="content has-text-justified">
         <p>
-          We evaluate our framework on an extended BioProBench with four specialized subsets:
-          <span class="tag is-light">Subset A: Protocol Drafting</span>
-          <span class="tag is-light">Subset B: Code Generation</span>
-          <span class="tag is-light">Subset C: Long-Horizon</span>
-          <span class="tag is-light">Subset D: Error Correction</span>.
-          The benchmark includes a digitized hardware registry (<code>惟</code>) for 22 core synthetic biology instruments and strict API-level constraints to bridge sim-to-real deployment.
+          我们在扩展版 BioProBench 上评估框架性能，包含四个专项子集：
+          <span class="tag is-light">子集 A：流程起草</span>
+          <span class="tag is-light">子集 B：代码生成</span>
+          <span class="tag is-light">子集 C：长程任务</span>
+          <span class="tag is-light">子集 D：错误纠正</span>。
+          该基准包含覆盖 22 类核心合成生物设备的数字化硬件注册表（<code>Ω</code>），并采用严格的 API 级约束以弥合仿真到真实部署的差距。
         </p>
       </div>
     </div>
@@ -497,10 +534,10 @@
       <div class="box" style="border-top: 5px solid #3273dc;">
         <div class="tabs is-centered is-boxed" id="extend-tabs">
           <ul>
-            <li class="is-active" data-target="ext-subset-a"><a><span>Subset A</span></a></li>
-            <li data-target="ext-subset-b"><a><span>Subset B</span></a></li>
-            <li data-target="ext-subset-c"><a><span>Subset C</span></a></li>
-            <li data-target="ext-subset-d"><a><span>Subset D</span></a></li>
+            <li class="is-active" data-target="ext-subset-a"><a><span>子集 A</span></a></li>
+            <li data-target="ext-subset-b"><a><span>子集 B</span></a></li>
+            <li data-target="ext-subset-c"><a><span>子集 C</span></a></li>
+            <li data-target="ext-subset-d"><a><span>子集 D</span></a></li>
           </ul>
         </div>
 
@@ -509,8 +546,8 @@
             <table class="table is-fullwidth is-striped is-hoverable leaderboard-table">
               <thead>
                 <tr>
-                  <th>Method</th><th>Backbone</th>
-                  <th>ROUGE-L 鈫?/th><th>S_sem 鈫?/th><th>C_s 鈫?/th><th>Time (s) 鈫?/th>
+                  <th>方法</th><th>基座模型</th>
+                  <th>ROUGE-L ↑</th><th>S_sem ↑</th><th>C_s ↑</th><th>Time (s) ↓</th>
                 </tr>
               </thead>
               <tbody>
@@ -532,8 +569,8 @@
             <table class="table is-fullwidth is-striped is-hoverable leaderboard-table">
               <thead>
                 <tr>
-                  <th>Method</th><th>Backbone</th>
-                  <th>S_code 鈫?/th><th>C_p 鈫?/th><th>Acc_param 鈫?/th>
+                  <th>方法</th><th>基座模型</th>
+                  <th>S_code ↑</th><th>C_p ↑</th><th>Acc_param ↑</th>
                 </tr>
               </thead>
               <tbody>
@@ -555,8 +592,8 @@
             <table class="table is-fullwidth is-striped is-hoverable leaderboard-table">
               <thead>
                 <tr>
-                  <th>Method</th><th>Backbone</th>
-                  <th>Succ. 鈫?/th><th>Acc_param 鈫?/th><th>C_p 鈫?/th>
+                  <th>方法</th><th>基座模型</th>
+                  <th>Succ. ↑</th><th>Acc_param ↑</th><th>C_p ↑</th>
                 </tr>
               </thead>
               <tbody>
@@ -574,8 +611,8 @@
             <table class="table is-fullwidth is-striped is-hoverable leaderboard-table">
               <thead>
                 <tr>
-                  <th>Method</th><th>Backbone</th>
-                  <th>ACC_seq 鈫?/th><th>C_p 鈫?/th><th>Loop Rate 鈫?/th>
+                  <th>方法</th><th>基座模型</th>
+                  <th>ACC_seq ↑</th><th>C_p ↑</th><th>Loop Rate ↓</th>
                 </tr>
               </thead>
               <tbody>
@@ -594,46 +631,92 @@
 
 <hr style="margin: 50px 0;">
 
-<section class="section" id="Method">
+<section class="section" id="method">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">馃 鏍稿績鏂规硶: BioProAgent</h2>
+        <h2 class="title is-3">🤖 方法：BioProAgent</h2>
         <div class="content has-text-justified">
-          <h3>BioProAgent锛氱敤浜庡彈闄愮瀛﹁鍒掔殑绁炵粡绗﹀彿鎺ュ湴妗嗘灦</h3>
+          <h3>BioProAgent：面向受约束科学规划的神经符号落地框架</h3>
             <ul>
               <li>
-                <strong>鐘舵€佸寮虹殑鑷€傚簲瑙勫垝锛堝彈 FSM 绾︽潫鐨勬棤鑴氭湰瑙勫垝鍣級</strong>锛?                鎽掑純浜嗗兊鍖栫殑绾挎€у伐浣滄祦锛岄噰鐢?strong>绁炵粡绗﹀彿妗嗘灦</strong>锛岄€氳繃纭畾鎬х殑鏈夐檺鐘舵€佹満锛團SM锛夋潵绾︽潫姒傜巼鎬х殑妯″瀷瑙勫垝銆傛櫤鑳戒綋鑳藉鏍规嵁褰撳墠鐘舵€佺伒娲婚€夋嫨妫€绱€佽崏妗堢敓鎴愭垨浠ｇ爜缂栧啓锛屾湁鏁堣В鍐充簡 LLM 鍦ㄥ鐞嗘箍瀹為獙涓ヨ嫑鐗╃悊绾︽潫鏃剁殑鐭澘銆?              </li>
+                <strong>状态增强自适应规划（FSM 约束的无脚本规划器）</strong>：
+                摒弃刚性的线性流程，采用
+                <strong>神经符号框架</strong>，通过确定性的
+                <em>有限状态机（FSM）</em> 约束概率规划。智能体基于当前状态灵活选择检索、草案生成或代码生成，
+                以应对 LLM 在湿实验物理执行约束下的能力不足。
+              </li>
       
               <li>
-                <strong>绉戝瀹℃煡锛圫cientific Review锛?/strong>锛?                鍐呯疆浜嗕弗鏍肩殑绉戝鍙嶆€濇満鍒讹紙楠岃瘉鍣級锛岃嚜鍔ㄦ鏌ュ鐓х粍閬楁紡銆侀€昏緫缂洪櫡銆佸弬鏁板悎鐞嗘€у拰鏈哄櫒浠ｇ爜鏈夋晥鎬с€傚己鍒舵墽琛屼弗璋ㄧ殑<strong>鈥滆璁?楠岃瘉-绾犻敊鈥濓紙DVR锛?/strong>宸ヤ綔娴侊紝纭繚瀹為獙鑽夋鐨勭瀛︿弗瀵嗘€с€?              </li>
+                <strong>科学审查</strong>：
+                引入严格的科学反思机制（Validator），自动检查对照组缺失、逻辑缺陷、参数合理性与机器代码有效性，
+                并执行严格的 <em>Draft-Verify-Rectify (DVR)</em> 工作流，确保实验 protocol 的科学严谨性。
+              </li>
       
               <li>
-               <strong>鑷姩鍖栫‖浠跺榻?/strong>锛?                璇诲彇瀹為獙瀹よ澶囧拰鑰楁潗搴撳瓨锛圕SV锛夛紝閫氳繃<strong>璇箟绗﹀彿鎺ュ湴锛圫emantic Symbol Grounding锛?/strong>灏嗚嚜鐒惰瑷€姝ラ鏄犲皠涓哄叿浣撶殑鏈哄櫒鎿嶄綔锛屽悓鏃跺皢 Token 娑堣€楅檷浣庣害 6 鍊嶃€?              </li>
+               <strong>自动化硬件对齐</strong>：
+                读取实验设备与耗材清单（CSV），通过<strong>语义符号落地</strong>将自然语言步骤映射为具体机器操作，
+                将 token 消耗降低约 6 倍。
+              </li>
       
               <li>
-                <strong>娣峰悎璁板繂绯荤粺</strong>锛?                <ul>
-                  <li><strong>鐭湡璁板繂</strong>锛氱粨鍚?strong>鎯呮櫙璁板繂锛圗pisodic锛?/strong>鍜?strong>宸ヤ綔璁板繂锛圵orking锛?/strong>锛岀淮鎸侀暱搴忓垪瀹為獙鑽夋鐨勪竴鑷存€с€?/li>
-                  <li><strong>闀挎湡璁板繂</strong>锛氶泦鎴?<strong>Mem0</strong> 妗嗘灦锛岀敤浜庡洖蹇嗚繃鍘荤殑瀹為獙缁忛獙銆?/li>
+                <strong>混合记忆系统</strong>：
+                <ul>
+                  <li><strong>短期记忆</strong>：结合<strong>情景记忆</strong>与<strong>工作记忆</strong>，维持长程 protocol 一致性。</li>
+                  <li><strong>长期记忆</strong>：集成 <strong>Mem0</strong> 回忆历史实验经验。</li>
                 </ul>
               </li>
       
               <li>
-                <strong>浜虹被鍦ㄧ幆锛圚uman-in-the-Loop锛?/strong>锛?                鍦ㄥ叧閿喅绛栫偣涓诲姩璇锋眰鐢ㄦ埛纭锛屼负楂橀闄╃殑婀垮疄楠屾搷浣滄彁渚涙渶缁堝畨鍏ㄤ繚闅溿€?              </li>
+                <strong>人在回路</strong>：
+                在关键决策节点主动请求用户确认，保障高风险湿实验操作安全。
+              </li>
             </ul>
+          <!-- <p>
+            BioProAgent uses a <strong>Design-Verify-Rectify</strong> workflow. The Symbolic FSM acts as a "guardrail" for the Neural LLM, checking state transitions (e.g., volume limits, temperature ranges) in real-time.
+          </p> -->
           <div style="text-align: center; margin: 30px 0;">
-            <img src="./static/images/architecture.png" alt="BioProAgent 鏋舵瀯鍥?>
+            <img src="./static/images/architecture.png" alt="BioProAgent Architecture">
           </div>
           <div class="content has-text-centered" style="margin-top: 15px; color: #555;">
             <p>
-              <strong>BioProAgent 鏋舵瀯姒傝锛?/strong>
-              <strong>(a)</strong> 璁ょ煡璁板繂妯″潡鍒╃敤绗﹀彿鎺ュ湴 <em>桅</em> 楂樻晥绠＄悊涓婁笅鏂囷紱
-              <strong>(b)</strong> 绁炵粡瑙勫垝鍣?<em>蟺鈧€</em> 琚敋瀹氬湪鈥滆璁?楠岃瘉-绾犻敊鈥濈殑 FSM 鐘舵€佹満<em> 螖(蟽)</em> 涓紱
-              <strong>(c)</strong> 鍒嗗眰楠岃瘉鏈哄埗 (<em>K鈧?/em>, <em>K鈧?/em>) 浣滀负瀹夊叏鑱旈攣锛岄€氳繃纭畾鎬цЕ鍙戠籂閿欐潵寮哄埗淇濊瘉鐗╃悊鐜鐨勫悎瑙勬€с€?            </p>
+              <strong>BioProAgent 概览。</strong>
+              <strong>(a)</strong> 认知记忆通过符号落地 <em>Φ</em> 高效管理上下文；
+              <strong>(b)</strong> 神经规划器 <em>π₀</em> 落地于 Design-Verify-Rectify FSM <em>Δ(σ)</em>；
+              <strong>(c)</strong> 分层验证（<em>Kₛ</em>, <em>Kₚ</em>）作为安全互锁，通过确定性触发修正来保证物理合规。
+            </p>
           </div>
         </div>
       </div>
     </div>
+    
+    <br>
+
+    <!-- <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">🧬 Dataset: BioProBench</h2>
+        <div class="content">
+          <p>
+            Constructed from <strong>27,000 protocols</strong>, covering diverse domains like Cell Culture, PCR, and DNA Extraction.
+          </p>
+          <div style="text-align: center; margin: 30px 0;">
+            <img src="./static/images/stats.png" alt="BioProBench Statistics">
+          </div>
+            <div class="content has-text-centered" style="margin-top: 15px; color: #555;">
+            <p>
+              <strong>Overview of BioProBench.</strong>
+                <strong>(a)</strong> A foundational corpus of 27,000 professionally authored protocols;
+                <strong>(b)</strong> A structured dataset of over 550,000 instances derived from this BioProCorpus,
+                which is partitioned into a training set to facilitate model fine-tuning and a held-out test set; and
+                <strong>(c)</strong> A rigorous benchmark with novel, domain-specific metrics to evaluate procedural understanding,
+                such as keyword-based content metrics and embedding-based structural metrics,
+                to accurately quantify procedural knowledge.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
   </div>
 </section>
 
@@ -641,65 +724,68 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">馃搱 BioProAgent 鏍稿績鎬ц兘琛ㄧ幇</h2>
+        <h2 class="title is-3">📈 BioProAgent 性能</h2>
         <div class="content has-text-justified">
           <p>
-            BioProAgent 鎵撶牬浜嗕紶缁熸櫤鑳戒綋鍦ㄢ€滅瀛︽帹鐞嗏€濅笌鈥滅墿鐞嗗畨鍏ㄢ€濅箣闂存棤娉曞吋椤剧殑鍥板眬銆備笌鏈€鍏堣繘鐨勫熀鍑嗘ā鍨嬬浉姣旓紝瀹冨湪纭欢鍚堣鎬с€侀暱搴忓垪绋冲畾鎬т互鍙婃垚鏈晥鐜囨柟闈㈣〃鐜板嚭鏄捐憲浼樺娍锛?          </p>
+            BioProAgent 打破了科学推理与物理安全之间的取舍。与现有最优基线相比，它在硬件合规、长程稳定性和成本效率上表现更优：
+          </p>
           <ul>
-            <li><strong>鏋侀珮鐨勭墿鐞嗗悎瑙勬€э細</strong> 杈惧埌浜?<strong>95.6%</strong> 鐨勭墿鐞嗘搷浣滃悎瑙勭巼锛屾垚涓烘姷寰♀€滄ā鍨嬪够瑙夆€濈殑鍏抽敭瀹夊叏鑱旈攣鏈哄埗锛堢浉姣斾箣涓嬶紝ReAct 鏅鸿兘浣撳洜瀹夊叏宕╂簝浠呰幏寰?21.0% 鐨勫悎瑙勭巼锛夈€?/li>
-            <li><strong>鑷富绾犻敊涓庤嚜鎰堬細</strong> 褰撻潰瀵规敞鍏ョ殑閿欒鏃讹紝鎵€鏈夋爣鍑嗗熀鍑嗘櫤鑳戒綋鐨勭籂閿欑巼鍧囦负 0%锛涜€?BioProAgent 閫氳繃 FSM 鍔ㄦ€佽鐩栦笉瀹夊叏鐨勮建杩癸紝灏嗙墿鐞嗗畨鍏ㄦ仮澶嶇巼鎻愬崌鑷?<strong>88.7%</strong> 銆?/li>
-            <li><strong>鏋佽嚧鐨勬垚鏈晥鐜囷細</strong> 閫氳繃璇箟绗﹀彿鎺ュ湴鏈哄埗瑙ｈ€﹂珮缁存暟鎹浇鑽凤紝鍦ㄧ淮鎸?60 姝ラ暱瑙嗛噹浠诲姟 100% 鎴愬姛鐜囩殑鍚屾椂锛屽皢 Token 娑堣€楁瘮 AutoGPT 闄嶄綆浜?<strong>绾?82%</strong> 銆?/li>
+            <li><strong>卓越的物理合规性：</strong>物理合规率达到 <strong>95.6%</strong>，可作为关键安全互锁机制，抵御常导致 ReAct 智能体灾难性失败（21.0%）的幻觉问题。</li>
+            <li><strong>自主自纠能力：</strong>在注入错误设置下，标准基线智能体纠错率均为 0%；而 BioProAgent 的 FSM 可动态覆盖不安全轨迹，将物理安全恢复到 <strong>88.7%</strong>。</li>
+            <li><strong>成本效率：</strong>通过语义符号落地解耦高维数据负载，相比 AutoGPT 可减少约 <strong>82%</strong> 的 token 消耗，同时在 60 步长程工作流中保持 100% 成功率。</li>
           </ul>
         </div>
         <div style="text-align: center; margin: 30px 0;">
-          <img class="result-figure" src="./static/images/agent-results.png" alt="绉戝鎺ㄧ悊涓庤嚜鍔ㄥ寲鍙墽琛屾€у姣?>
+          <img class="result-figure" src="./static/images/agent-results.png" alt="Scientific Reasoning vs. Automation Executability">
         </div>
         <div class="content has-text-centered" style="margin-top: 15px; color: #555; font-size: 0.95rem;">
           <p>
-            <strong>鍥剧ず锛?/strong><strong>绉戝鎺ㄧ悊 vs. 鑷姩鍖栧彲鎵ц鎬с€?/strong> 鍘熺敓 LLM 寰€寰€浣嶄簬 <strong>鐞嗚鍖猴紙Theoretical Zone锛?/strong>锛屽嵆閫昏緫鎺ㄧ悊杈冨己浣嗕唬鐮佹墽琛岃兘鍔涜緝寮憋紱绁炵粡鏅鸿兘浣擄紙濡?ReAct锛夐€氬父浠ｇ爜鐢熸垚鏇村ソ锛屼絾绉戝鎺ㄧ悊鑳藉姏涓嶈冻銆侭ioProAgent 鍦ㄤ袱鏉＄淮搴︿笂鍚屾椂棰嗗厛锛屽疄鐜颁簡鏇撮珮姘村钩鐨?<strong>鍙俊鑷富锛圱rustworthy Autonomy锛?/strong>銆?          </p>
+            <strong>图注：</strong><strong>科学推理 vs. 自动化可执行性。</strong>普通 LLM 多位于<strong>理论区</strong>（逻辑推理强、可执行代码弱）；神经智能体（如 ReAct）虽常能生成更可执行的代码，却在科学推理上失效。BioProAgent 在两条维度上均取得更优表现，实现<strong>可信自主</strong>。
+          </p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="case" style="background-color: #f9f9f9;">
+<section class="section" style="background-color: #f9f9f9;">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">馃攳 妗堜緥灞曠ず锛欶SM 椹卞姩鐨勮嚜鎴戠籂閿?/h2>
+        <h2 class="title is-3">🔍 案例分析：FSM 驱动的自我纠错</h2>
         <div class="content has-text-justified">
           <p>
-            鏍囧噯鐨?LLM 鏅鸿兘浣撻€氬父鍦ㄥ紑鐜姸鎬佷笅杩愯锛氫竴鏃︾敓鎴愬嵄闄╃殑骞昏鍙傛暟锛堜緥濡傜蹇冩満杞€熻秴闄愶級锛屽氨浼氱洿鎺ユ墽琛屽苟瀵艰嚧鐗╃悊鎹熷潖銆傝€?BioProAgent 鑳藉涓诲姩鎷︽埅骞朵慨澶嶈繖浜涜嚧鍛藉够瑙夈€?          </p>
+            标准 LLM 智能体通常采用开环执行：一旦生成危险参数（如超过离心机上限）就会立刻执行并导致物理失败。BioProAgent 会主动拦截这类幻觉。
+          </p>
         </div>
         <div style="text-align: center; margin: 30px 0;">
-          <img class="result-figure" src="./static/images/case_study.png" alt="鑷垜绾犻敊杞ㄨ抗">
+          <img class="result-figure" src="./static/images/case_study.png" alt="Self-Correction Trajectories">
         </div>
         <div class="content has-text-centered" style="margin-top: 15px; color: #555; font-size: 0.9rem;">
           <p>
-            <strong>鍥句緥锛?/strong> 鍦ㄧ墿鐞嗚繚瑙勬渚?(a) 涓紝绗﹀彿瑙勫垯寮曟搸鎷︽埅浜嗕笉瀹夊叏鐨勮秴闄愯浆閫?(25,000g)锛屽己鍒剁姸鎬佹満娴佽浆鑷?<code>RECTIFY_CODE</code> 鐘舵€侊紝骞堕噸鏂扮敓鎴愪簡瀹夊叏闄愬害鍐呯殑浠ｇ爜 (15,000g) 銆傚湪绗﹀彿鎺ュ湴閿欒妗堜緥 (b) 涓紝绯荤粺妫€娴嬪埌鏈畾涔夌殑璧勬簮 ID ("new_plate")锛屽苟寮曞鏅鸿兘浣撳皢鍏堕噸鏂版槧灏勮嚦宸查獙璇佺殑鐗╃悊妲戒綅 ("plate_1") 銆?          </p>
+            <strong>图注：</strong>在物理违规案例 (a) 中，符号规则引擎拦截不安全转速上限（25,000g），强制切换到 <code>RECTIFY_CODE</code> 状态，并在安全范围（15,000g）内重新生成代码；在符号落地错误案例 (b) 中，系统检测到未定义资源 ID（"new_plate"），并引导智能体映射到已验证槽位（"plate_1"）。
+          </p>
         </div>
       </div>
     </div>
   </div>
 </section>
-
   
 <section class="section" id="BibTeX" style="background-color: #f5f5f5;">
   <div class="container is-max-desktop content">
-    <h2 class="title is-3">寮曠敤 (BibTeX)</h2>
-    <pre><code>@article{liu2026bioproagent,
-  title={BioProAgent: Neuro-Symbolic Grounding for Constrained Scientific Planning},
-  author={Liu, Yuyang and Wang, Jingya and Lv, Liuzhenghao and Tian, Yonghong},
-  journal={arXiv preprint arXiv:2603.00876},
-  year={2026}
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code class="language-bibtex">@article{liu2026bioproagent,
+  title   = {BioProAgent: Neuro-Symbolic Grounding for Constrained Scientific Planning},
+  author  = {Liu, Yuyang and Wang, Jingya and Lv, Liuzhenghao and Tian, Yonghong},
+  journal = {arXiv preprint arXiv:2603.00876},
+  year    = {2026}
 }
 
 @article{liu2025bioprobench,
-  title={BioProBench: Comprehensive Dataset and Benchmark in Biological Protocol Understanding and Reasoning},
-  author={Liu, Yuyang and Lv, Liuzhenghao and Zhang, Xiancheng and Yuan, Li and Tian, Yonghong},
-  journal={arXiv preprint arXiv:2505.07889},
-  year={2025}
+  title   = {BioProBench: Comprehensive Dataset and Benchmark in Biological Protocol Understanding and Reasoning},
+  author  = {Liu, Yuyang and Lv, Liuzhenghao and Zhang, Xiancheng and Yuan, Li and Tian, Yonghong},
+  journal = {arXiv preprint arXiv:2505.07889},
+  year    = {2025}
 }</code></pre>
   </div>
 </section>
@@ -708,20 +794,14 @@
   <div class="container">
     <div class="content has-text-centered">
       <p>
-        缃戦〉妯℃澘鍙傝€冭嚜 <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> 鍙?<a href="https://howardli1984.github.io/ChemCoTBench.github.io/">ChemCoTBench</a>銆?      </p>
-    </div>
-  </div>
-</footer>
-
-<section class="section" style="padding-top: 0.5rem; padding-bottom: 1.5rem;">
-  <div class="container">
-    <div class="content has-text-centered" style="color: #666;">
+        页面模板改编自 <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> 与 <a href="https://howardli1984.github.io/ChemCoTBench.github.io/">ChemCoTBench</a>。
+      </p>
       <p>
-        <strong>璁块棶缁熻锛堝綋鍓嶆祻瑙堝櫒锛夛細</strong>鎬昏闂?<span id="visit-total">0</span> | 浠婃棩锛?span id="visit-date">-</span>锛?span id="visit-today">0</span>
+        <strong>访问统计（当前浏览器）：</strong>总访问 <span id="visit-total">0</span> | 今日（<span id="visit-date">-</span>）<span id="visit-today">0</span>
       </p>
     </div>
   </div>
-</section>
+</footer>
 
 <script>
   (function () {
@@ -770,5 +850,3 @@
 
 </body>
 </html>
-
-
