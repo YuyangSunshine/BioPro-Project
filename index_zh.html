@@ -199,6 +199,10 @@
       <div class="news-title"><i class="fas fa-bullhorn"></i> 最新动态</div>
 
       <div class="news-item">
+        🔬 <strong>[2026-04-01]</strong> 更新：我们新增了 <strong>gpt-5.4-2026-03-05</strong>、<strong>gemini-3-flash-preview-nothinking</strong>、<strong>claude-sonnet-4-5-20250929</strong> 在 PQA/ERR/ORD/GEN 四项任务上的评测结果。
+      </div>
+
+      <div class="news-item">
         🔥 <strong>[2026-03-18]</strong> 我们的 BioProAgent 已在 AI4S LAB 平台正式上线！<a href="https://ai4slab.pkusz.edu.cn/" target="_blank"><strong>欢迎前往体验并下单自动化湿实验</strong></a>。
       </div>
 
@@ -339,57 +343,30 @@
               </tr>
               
               <tr>
-                <td>Gemini-2.5-Pro</td>
+                <td>gemini-3-flash-preview-nothinking</td>
                 <td><span class="tag is-info is-light">闭源商业</span></td>
-                <td class="has-text-centered">70.27 🥈</td>
-                <td class="has-text-centered">64.83 🥈</td>
-                <td class="has-text-centered">0.810 🥈</td>
-                <td class="has-text-centered">7.11</td> 
+                <td class="has-text-centered">73.33</td>
+                <td class="has-text-centered">65.08</td>
+                <td class="has-text-centered">0.8096</td>
+                <td class="has-text-centered">10.31</td> 
               </tr>
               
               <tr>
-                <td>Claude-3.7-Sonnet</td>
+                <td>claude-sonnet-4-5-20250929</td>
                 <td><span class="tag is-info is-light">闭源商业</span></td>
-                <td class="has-text-centered">63.90</td>
-                <td class="has-text-centered">60.93</td>
-                <td class="has-text-centered">0.734</td>
-                <td class="has-text-centered">8.38</td> 
+                <td class="has-text-centered">68.02</td>
+                <td class="has-text-centered">63.17</td>
+                <td class="has-text-centered">0.7730</td>
+                <td class="has-text-centered">6.28</td> 
               </tr>
 
               <tr>
-                <td>GPT-4o</td>
+                <td>gpt-5.4-2026-03-05</td>
                 <td><span class="tag is-info is-light">闭源商业</span></td>
-                <td class="has-text-centered">63.50</td>
-                <td class="has-text-centered">62.67</td>
-                <td class="has-text-centered">0.627</td>
-                <td class="has-text-centered">8.92</td>
-              </tr>
-
-              <tr>
-                <td>Gemini-2.0-Flash</td>
-                <td><span class="tag is-info is-light">闭源商业</span></td>
-                <td class="has-text-centered">63.44</td>
-                <td class="has-text-centered">58.67</td>
-                <td class="has-text-centered">0.637</td>
-                <td class="has-text-centered">9.18</td>
-              </tr>
-
-              <tr>
-                <td>GPT-4-Turbo</td>
-                <td><span class="tag is-info is-light">闭源商业</span></td>
-                <td class="has-text-centered">57.92</td>
-                <td class="has-text-centered">56.17</td>
-                <td class="has-text-centered">0.528</td>
-                <td class="has-text-centered">9.26</td>
-              </tr>
-
-              <tr>
-                <td>o3-mini</td>
-                <td><span class="tag is-info is-light">闭源商业</span></td>
-                <td class="has-text-centered">65.67 </td>
-                <td class="has-text-centered">62.33</td>
-                <td class="has-text-centered">0.733</td>
-                <td class="has-text-centered">8.69</td>
+                <td class="has-text-centered">70.67</td>
+                <td class="has-text-centered">63.58</td>
+                <td class="has-text-centered">0.7270</td>
+                <td class="has-text-centered">9.20</td>
               </tr>
 
               <tr style="border-top: 2px solid #dbdbdb;">
@@ -524,7 +501,12 @@
           </ul>
         </div>
         <div style="text-align: center; margin: 30px 0;">
-          <img src="./static/images/results.png" alt="BioProAgent 性能数据">
+          <img src="./static/images/agent-results.png" alt="科学推理与自动化可执行性对比">
+        </div>
+        <div class="content has-text-centered" style="margin-top: 15px; color: #555; font-size: 0.95rem;">
+          <p>
+            <strong>图示：</strong><strong>科学推理 vs. 自动化可执行性。</strong> 原生 LLM 往往位于 <strong>理论区（Theoretical Zone）</strong>，即逻辑推理较强但代码执行能力较弱；神经智能体（如 ReAct）通常代码生成更好，但科学推理能力不足。BioProAgent 在两条维度上同时领先，实现了更高水平的 <strong>可信自主（Trustworthy Autonomy）</strong>。
+          </p>
         </div>
       </div>
     </div>
@@ -583,6 +565,38 @@
     </div>
   </div>
 </footer>
+
+<section class="section" style="padding-top: 0.5rem; padding-bottom: 1.5rem;">
+  <div class="container">
+    <div class="content has-text-centered" style="color: #666;">
+      <p>
+        <strong>访问统计（当前浏览器）：</strong>总访问 <span id="visit-total">0</span> | 今日（<span id="visit-date">-</span>）<span id="visit-today">0</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var totalKey = "bioprosuite_total_visits";
+    var today = new Date().toISOString().slice(0, 10);
+    var dailyKey = "bioprosuite_daily_visits_" + today;
+
+    var total = parseInt(localStorage.getItem(totalKey) || "0", 10) + 1;
+    var todayCount = parseInt(localStorage.getItem(dailyKey) || "0", 10) + 1;
+
+    localStorage.setItem(totalKey, String(total));
+    localStorage.setItem(dailyKey, String(todayCount));
+
+    var totalEl = document.getElementById("visit-total");
+    var todayEl = document.getElementById("visit-today");
+    var dateEl = document.getElementById("visit-date");
+
+    if (totalEl) totalEl.textContent = total.toLocaleString();
+    if (todayEl) todayEl.textContent = todayCount.toLocaleString();
+    if (dateEl) dateEl.textContent = today;
+  })();
+</script>
 
 </body>
 </html>
