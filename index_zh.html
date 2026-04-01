@@ -74,6 +74,7 @@
       color: #333;
       border-bottom: 2px solid #ddd;
     }
+    .leaderboard-table { font-size: 0.88rem; }
 
     /* 章节通用样式 */
     .section-header { text-align: center; margin-bottom: 40px; }
@@ -199,7 +200,7 @@
       <div class="news-title"><i class="fas fa-bullhorn"></i> 最新动态</div>
 
       <div class="news-item">
-        🔬 <strong>[2026-04-01]</strong> 更新：我们新增了 <strong>gpt-5.4-2026-03-05</strong>、<strong>gemini-3-flash-preview-nothinking</strong>、<strong>claude-sonnet-4-5-20250929</strong> 在 PQA/ERR/ORD/GEN 四项任务上的评测结果。
+        🔬 <strong>[2026-04-01]</strong> ICML Rebuttal 更新：我们新增了 <strong>gpt-5.4-2026-03-05</strong>、<strong>gemini-3-flash-preview-nothinking</strong>、<strong>claude-sonnet-4-5-20250929</strong> 在 PQA/ERR/ORD/GEN 四项任务上的评测结果。
       </div>
 
       <div class="news-item">
@@ -318,7 +319,7 @@
         </div>
 
         <div class="table-container">
-          <table class="table is-fullwidth is-striped is-hoverable">
+          <table class="table is-fullwidth is-striped is-hoverable leaderboard-table">
             <thead>
               <tr style="background-color: #f9f9f9;">
                 <th style="width: 20%;">模型</th>
@@ -367,6 +368,60 @@
                 <td class="has-text-centered">63.58</td>
                 <td class="has-text-centered">0.7270</td>
                 <td class="has-text-centered">9.20</td>
+              </tr>
+
+              <tr>
+                <td>Gemini-2.5-Pro</td>
+                <td><span class="tag is-info is-light">闭源商业</span></td>
+                <td class="has-text-centered">70.27</td>
+                <td class="has-text-centered">64.83</td>
+                <td class="has-text-centered">0.810</td>
+                <td class="has-text-centered">7.11</td>
+              </tr>
+
+              <tr>
+                <td>Claude-3.7-Sonnet</td>
+                <td><span class="tag is-info is-light">闭源商业</span></td>
+                <td class="has-text-centered">63.90</td>
+                <td class="has-text-centered">60.93</td>
+                <td class="has-text-centered">0.734</td>
+                <td class="has-text-centered">8.38</td>
+              </tr>
+
+              <tr>
+                <td>GPT-4o</td>
+                <td><span class="tag is-info is-light">闭源商业</span></td>
+                <td class="has-text-centered">63.50</td>
+                <td class="has-text-centered">62.67</td>
+                <td class="has-text-centered">0.627</td>
+                <td class="has-text-centered">8.92</td>
+              </tr>
+
+              <tr>
+                <td>Gemini-2.0-Flash</td>
+                <td><span class="tag is-info is-light">闭源商业</span></td>
+                <td class="has-text-centered">63.44</td>
+                <td class="has-text-centered">58.67</td>
+                <td class="has-text-centered">0.637</td>
+                <td class="has-text-centered">9.18</td>
+              </tr>
+
+              <tr>
+                <td>GPT-4-Turbo</td>
+                <td><span class="tag is-info is-light">闭源商业</span></td>
+                <td class="has-text-centered">57.92</td>
+                <td class="has-text-centered">56.17</td>
+                <td class="has-text-centered">0.528</td>
+                <td class="has-text-centered">9.26</td>
+              </tr>
+
+              <tr>
+                <td>o3-mini</td>
+                <td><span class="tag is-info is-light">闭源商业</span></td>
+                <td class="has-text-centered">65.67 </td>
+                <td class="has-text-centered">62.33</td>
+                <td class="has-text-centered">0.733</td>
+                <td class="has-text-centered">8.69</td>
               </tr>
 
               <tr style="border-top: 2px solid #dbdbdb;">
@@ -426,6 +481,67 @@
         看看 <a href="#Method">BioProAgent</a> 是如何填补上述推理鸿沟，并在智能体执行任务上实现 <strong>100% 成功率</strong> 的。
       </div>
       
+    </div>
+  </div>
+</section>
+
+<section class="section" id="extend-bioprobench" style="background-color: #f8fbff;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Extend-BioProBench 评测</h2>
+        <div class="content has-text-justified">
+          <p>
+            我们在 BioProBench 基础上构建了扩展评测集（extend-bioprobench），包含四个子集：
+            <strong>Subset A（Protocol Drafting）</strong>评估科学有效性；
+            <strong>Subset B（Code Generation）</strong>评估硬件 schema 对齐与参数准确性；
+            <strong>Subset C（Long-Horizon）</strong>评估全局编排能力（9 个复杂 protocol，共 547 个原子步骤，单任务最多 238 步）；
+            <strong>Subset D（Error Correction）</strong>评估注入错误下的鲁棒性。
+            为保证可复现性，我们提供完整代码、覆盖 22 类合成生物学核心仪器的数字化硬件注册表（<code>Ω</code>）以及数据集。
+            虽然在仿真环境中评估，但所有生成指令都严格遵循标准自动化设备 API 规范，以缩小 sim-to-real gap。
+          </p>
+        </div>
+
+        <div class="table-container">
+          <table class="table is-fullwidth is-striped is-hoverable leaderboard-table">
+            <thead>
+              <tr>
+                <th>Method</th><th>Backbone</th>
+                <th>ROUGE-L ↑</th><th>S_sem ↑</th><th>C_s ↑</th><th>Time (s) ↓</th>
+                <th>S_code ↑</th><th>C_p ↑</th><th>Acc_param ↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Direct</td><td>GPT-4o</td><td>0.107</td><td>0.202</td><td>0.189</td><td>13.8</td><td>0.590</td><td>0.995</td><td>0.295</td></tr>
+              <tr><td>Direct</td><td>Gemini-3-Flash</td><td>0.130</td><td>0.247</td><td>0.322</td><td>12.1</td><td>0.576</td><td>0.996</td><td>0.287</td></tr>
+              <tr><td>Direct</td><td>DeepSeek-V3</td><td>0.123</td><td>0.260</td><td>0.285</td><td>52.1</td><td>0.495</td><td>0.995</td><td>0.205</td></tr>
+              <tr><td>Biomni</td><td>(Specialized)</td><td>0.081</td><td>0.252</td><td>0.342</td><td>87.1</td><td>N/A</td><td>N/A</td><td>N/A</td></tr>
+              <tr><td>ReAct</td><td>Gemini-3-Flash</td><td>0.116</td><td>0.268</td><td>0.455</td><td><strong>44.5</strong></td><td>0.038</td><td>0.210</td><td>0.103</td></tr>
+              <tr><td>Reflexion</td><td>Gemini-3-Flash</td><td>0.118</td><td>0.282</td><td>0.439</td><td>148.4</td><td>0.278</td><td>0.534</td><td>0.403</td></tr>
+              <tr><td>AutoGPT</td><td>Gemini-3-Flash</td><td>0.116</td><td>0.258</td><td>0.429</td><td>119.6</td><td>0.540</td><td>0.911</td><td>0.468</td></tr>
+              <tr style="font-weight: 700; background-color: #f2f2f2;"><td>BioProAgent</td><td>Gemini-3-Flash</td><td>0.147</td><td>0.344</td><td>0.591</td><td>71.8</td><td>0.653</td><td>0.956</td><td>0.610</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-container" style="margin-top: 18px;">
+          <table class="table is-fullwidth is-striped is-hoverable leaderboard-table">
+            <thead>
+              <tr>
+                <th>Method</th><th>Backbone</th>
+                <th>Succ. ↑</th><th>Acc_param ↑</th><th>C_p ↑</th>
+                <th>ACC_seq ↑</th><th>C_p ↑</th><th>Loop Rate ↓</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>ReAct</td><td>Gemini-3-Flash</td><td>88.9%</td><td>0.114</td><td>0.217</td><td>0.0%</td><td>0.000</td><td>40.0%</td></tr>
+              <tr><td>Reflexion</td><td>Gemini-3-Flash</td><td>33.3%</td><td>0.000</td><td>0.000</td><td>0.0%</td><td>0.000</td><td>0.0%</td></tr>
+              <tr><td>AutoGPT</td><td>Gemini-3-Flash</td><td>66.7%</td><td>0.409</td><td>0.644</td><td>0.0%</td><td>0.000</td><td>0.0%</td></tr>
+              <tr style="font-weight: 700; background-color: #f2f2f2;"><td>BioProAgent</td><td>Gemini-3-Flash</td><td>100.0%</td><td>0.718</td><td>0.950</td><td>0.464</td><td>0.887</td><td>0.0%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </section>
